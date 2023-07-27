@@ -1,0 +1,48 @@
+
+- [OK] retirar Heidenhain
+
+- [OK] colocar as marcas
+
+- [OK] colocar CMF antes do step nc
+
+- [OK] trocar elementos por features
+
+- [OK] ISO 6983 / RS274-D
+
+- [OK] acrescentar slide para resultados esperados antes dos alcançados 
+
+- [OK] citar BNF...
+
+- [OK] meio de transferência: fita perfurada
+
+- [OK] padrão ASCII
+
+- [OK] dialetos: têm uma base comum
+
+- [OK] corrigir os termos na table de cmf
+
+- [OK] [0-9]+[.]?[0-9]*
+
+- [OK] melhorar o tamanho das classes
+
+- [OK] na tabela de transp (RS274-D, dialeto Mach9)
+
+- [OK] explicar os metacaracteres de expressão regular
+
+- [OK] identificar eventos
+  troca de ferr
+  acelearacao do eixo
+
+explicar um pouco melhor sobre o algoritmo LR
+
+expressões regulares: search and replace, editores, etc.
+exemplo de context free grammar
+
+logos do ppgem
+
+melhorar a apresentação do cmf
+dar exemplo do edge cam
+instruções de mais alto nível
+
+vinícius, oee , cálculos de tempo
+
