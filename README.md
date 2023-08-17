@@ -5,9 +5,9 @@
 
 ```bash
 
-docker build -t qualificacao_slides .
+docker build -t msc_slides .
 
-./scripts/run_container.sh -m 12 -i 'dissertacao:latest' -r
+./scripts/run_container.sh -m 12 -i 'msc_slides:latest' -r
   
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

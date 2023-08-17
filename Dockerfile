@@ -12,15 +12,11 @@ RUN apt update -y && export DEBIAN_FRONTEND=noninteractive && apt install -y \
     texlive-lang-portuguese \
     texlive-fonts-recommended \
     biber \
-    abntex \
-    pandoc \
-    pandoc-citeproc \
-    pandoc-sidenote \
-    pandoc-citeproc-preamble \
+    abntex \ 
     && rm -Rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/dissertacao/scripts/docker-entrypoint.sh"]
-CMD ["/dissertacao/scripts/docker-cmd-script.sh"]
+ENTRYPOINT ["/slides/scripts/docker-entrypoint.sh"]
+CMD ["/slides/scripts/docker-cmd-script.sh"]
 
 
 

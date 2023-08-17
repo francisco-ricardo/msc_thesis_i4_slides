@@ -1,12 +1,12 @@
 version: "3.9"
 services:
-  dissertacao:
+  msc_slides:
     build: 
       context: .
       dockerfile: Dockerfile
       shm_size: '1gb'
-    image: dissertacao:latest
-    container_name: dissertacao
+    image: msc_slides:latest
+    container_name: msc_slides
     cpus: 0.75
     mem_reservation: '1024M'
     mem_limit: '2048M'
@@ -14,5 +14,5 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - .:/dissertacao
+      - .:/slides
 
