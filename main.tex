@@ -528,14 +528,29 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \begin{frame}{Objetivo Geral}
   \begin{itemize}
-    \item {
-      Desenvolver uma metodologia para interpretar os diferentes dialetos do formato RS274-D
-      e gerar um arquivo com dados temporais a respeito do programa CN, de tal forma que 
-      os eventos que venham a ocorrer durante a usinagem (por exemplo, troca de ferramenta 
-      e aceleração do eixo) sejam registrados com uma marca\c c\~ao de tempo (\emph{timestamp}).
+    \item { 
+      Desenvolver uma metodologia para interpretar os diferentes dialetos 
+      do formato \emph{RS274-D} e gerar um modelo granular de dados, no qual 
+      cada movimento da m\'aquina \'e registrado com uma marcação de tempo.
     }
   \end{itemize}
 \end{frame}
+
+\begin{frame}{Objetivos Específicos}
+  \begin{itemize}
+    \item Projetar uma estrutura de dados que contemple dois objetivos:
+    \begin{itemize}
+        \item Possibilitar o registro temporal dos eventos decorrentes do 
+              processamento do programa de controle numérico.
+        \item Formar uma camada abstrata de dados que possa ser utilizada
+              para tratar das questões da interoperabilidade entre os 
+              dialetos.
+    \end{itemize}
+    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
+    \item Implementar um estudo de caso a partir de um dialeto específico.
+\end{itemize}
+\end{frame}
+
 
 \subsection{Metodologia}
 
@@ -560,28 +575,22 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \begin{frame}{Interpretação}
   \begin{itemize}
-    \item {
-      Abordagem baseada em An\'alise Sint\'atica (comumente encontrada em compiladores).
-    }
-    \item {
-      O algoritmo projetado funciona como um compilador de linguagem de programa\c c\~ao.
-    }
-    \item {
-      O mecanismo \'e baseado em um fluxo de duas etapas:
-      \begin{enumerate}
-        \item Scanner.
-        \item Parser.
-      \end{enumerate}
-    }
+    \item Abordagem baseada em um fluxo de duas etapas:
+    \begin{enumerate}
+      \item Análise Léxica (ou \emph{Scanning}).
+      \item Análise Sintática (ou \emph{Parsing}).
+    \end{enumerate}
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Interpretação: Etapa 1}
   \begin{itemize}
-    \item A primeira etapa (\emph{Scanner}) l\^e a entrada e traduz as cadeias de caracteres em símbolos (tokens). 
-    \item Uma ferramenta chamada Lex foi utilizada para esta implementa\c c\~ao.
-    \item Os tokens são identificados a partir de expressões regulares.
+    \item A primeira etapa (\emph{Scanner}) l\^e a entrada e traduz as 
+          cadeias de caracteres em símbolos (tokens). 
+    \item Uma ferramenta chamada \emph{Flex} foi utilizada para esta 
+          implementa\c c\~ao.
+    \item Os tokens são identificados a partir de Expressões Regulares.
   \end{itemize}
 \end{frame}
 
@@ -623,17 +632,21 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \begin{frame}{Interpretação: Etapa 2}
   \begin{itemize}
-    \item A segunda etapa (\emph{Parser}) agrupa os símbolos em unidades sint\'aticas (no caso, blocos de comandos).
+    \item A segunda etapa (\emph{Parser}) agrupa os símbolos em unidades 
+          sint\'aticas (no caso, blocos de comandos).
     \item Utiliza uma Gramática Livre de Contexto (Context-Free Grammar).
-    \item Consiste em um conjunto de regras gramaticais que descrevem a sintaxe de uma
-    determinada linguagem (no caso, um dialeto RS274-D).
+    \item Consiste em um conjunto de regras gramaticais que descrevem a 
+          sintaxe de uma determinada linguagem (no caso, um dialeto RS274-D).
     \item Extensível para os diversos dialetos.
-    \item A sintaxe do dialeto é descrita através da notação Backus-Naur Form (BNF).
+    \item A sintaxe do dialeto é descrita através da notação Backus-Naur 
+          Form (BNF).
     \begin{itemize}
-      \item Linguagens de programação, formatos de documentos e protocolos de comunicação.
+      \item Linguagens de programação, formatos de documentos e 
+            protocolos de comunicação.
     \end{itemize}
-    \item O processamento é feito por um algoritmo LR, baseado no método \emph{Shift-Reduce},
-    amplamente utilizado para o processamento de linguagens de computação.
+    \item O processamento é feito por um algoritmo \emph{LR}, baseado no método 
+          \emph{Shift-Reduce}, amplamente utilizado para o processamento 
+          de linguagens de computação.
   \end{itemize}
 \end{frame}
 
@@ -814,35 +827,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-
-\subsection{Cronograma}
-\begin{frame}{Cronograma}
-  \begin{scriptsize}
-  \begin{tabular}{p{6.7cm}|p{1.0cm}|p{1.8cm}}
-      \hline
-      \bfseries{A\c c\~ao} & \bfseries{Prazo} & \bfseries{Status} \\
-      \hline
-      Sufici\^encia no Ingl\^es & 10/2021 & OK \\    
-      \hline
-      Publica\c c\~ao de artigo em congresso cient\'ifico (Cobem) & 11/2021 & OK \\
-      \hline
-      Cr\'edito das Disciplinas & 12/2021 & OK \\ 
-      \hline
-      Registro do artigo publicado no Cobem & 05/2022 & OK \\
-      \hline
-      Exame de Qualifica\c c\~ao & 06/2022 & ANDAMENTO \\ 
-      \hline    
-      Implementa\c c\~ao do Transpilador com An\'alise Sint\'atica & 08/2022 & ANDAMENTO \\
-      \hline
-      Implementa\c c\~ao do Processador de Fun\c c\~oes Can\^onicas & 09/2022 & PENDENTE \\
-      \hline
-      Publica\c c\~ao do artigo em Revista & 11/2022 & PENDENTE \\    
-      \hline
-      Defesa da Disserta\c c\~ao & 12/2022 & PENDENTE \\    
-      \hline        
-  \end{tabular}
-  \end{scriptsize}
-\end{frame}
 
 
 
