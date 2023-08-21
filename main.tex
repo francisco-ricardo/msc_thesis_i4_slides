@@ -390,7 +390,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
   Adaptado de POBOZNIAK, J.; SOBIESKI, S. Extension of STEP-NC data structure to represent
   manufacturing process structure in CAPP system. Procedia Manufacturing, Elsevier,
-  v. 11, p. 1692–1699, 2017.
+  v. 11, p. 1692-1699, 2017.
 
   \begin{figure}[H]
     \centering
@@ -522,6 +522,27 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
+\begin{frame}{Considerações}
+
+  \begin{itemize}
+    \item Assim como ocorre com o \emph{STEP-NC}, o formato baseado nas 
+          Funções Canônicas de Usinagem não tem sido amplamente adotado 
+          entre os controladores de CNC comerciais.
+    \item A atomicidade das Funções Canônicas de Usinagem representa uma 
+          característica interessante para o registro temporal de cada 
+          evento que ocorre na máquina-ferramenta durante o processamento 
+          do programa.
+    \item A simplicidade da sintaxe e a padronização das chamadas de 
+          funções são pontos positivos para a construção de uma camada 
+          de abstração a partir das Funções Canônicas de Usinagem.
+    \emph{CN}.
+
+  \end{itemize}
+
+\end{frame}
+
+
+
 \section{Projeto proposto}
 
 \subsection{Objetivo}
@@ -554,24 +575,47 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \subsection{Metodologia}
 
-\begin{frame}{Definições}
+\begin{frame}{Módulos}
   \begin{enumerate}
     \item {
-      \emph{Interpretação}: Interpretar o formato RS274-D e ser adaptável aos diversos 
-      dialetos RS274-D.
+      \emph{Transpiler}: 
+      \begin{itemize}
+        \item Interpretar o formato \emph{RS274-D};
+        \item Adaptável aos diversos dialetos RS274-D;
+        \item Elevar o nível de abstração dos dados para um formato 
+              neutro (independente de tecnologias proprietárias).
+        \item Processar o formato neutro e gerar as marcações de tempo.
+      \end{itemize}
     }
+
     \item {
-      \emph{Abstração}: Elevar o nível de abstração dos dados para um formato neutro
-      (independente de tecnologias proprietárias).
+      \emph{Persistence}:
+      \begin{itemize}
+        \item Armazenar e restaurar os dados do tipo \emph{Payload}.
+        \item Foi definida uma arquitetura orientada a documentos 
+              (\emph{NoSQL}) para o banco de dados, pois o sistema 
+              proposto não apresenta uma natureza relacional.
+      \end{itemize}
     }
+
     \item {
-      \emph{Processamento}: Processar o formato neutro e gerar 
-      as marcações de tempo em um arquivo que possa ser importado em planilhas ou 
-      softwares de estatística.
+      \emph{Output}
+      \begin{itemize}
+        \item Interpretar a lista de objetos \emph{Payload} 
+              e gerar dois tipos de saída:
+        \begin{itemize}
+              \item Um arquivo com os dados temporais da usinagem. 
+                    Em formato \emph{CSV}, para facilitar a importação 
+                    do arquivo em softwares de análise de dados.
+              \item Um arquivo em formato de Funções Canônicas de Usinagem.
+        \end{itemize}
+      \end{itemize}
     }
+
   \end{enumerate}
 \end{frame}
 
+TODO
 
 \begin{frame}{Interpretação}
   \begin{itemize}
