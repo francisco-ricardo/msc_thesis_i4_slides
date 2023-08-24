@@ -104,9 +104,20 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 % Section and subsections will appear in the presentation overview
 % and table of contents.
-\section{Padrão RS274-D}
 
- \subsection{Descrição}
+\section{Introdução}
+
+\begin{frame}
+  \frametitle{Introdução}
+
+  TODO
+
+\end{frame}
+
+\section{Formatos}
+
+
+\subsection{Padrão RS274-D}
 
 \begin{frame}{Origem}
   \begin{itemize}
@@ -326,9 +337,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-\section{Padrão STEP-NC}
 
-\subsection{Descrição}
+\subsection{Padrão STEP-NC}
 
 \begin{frame}{Origem}
   \begin{itemize}
@@ -422,9 +432,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \end{frame}
 
-\section{Funções Canônicas de Usinagem}
 
-\subsection{Descrição}
+\subsection{Funções Canônicas de Usinagem}
 
 \begin{frame}{Funções Canônicas de Usinagem}
   \begin{itemize}
@@ -540,7 +549,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 
 \end{frame}
-
 
 
 \section{Projeto proposto}
@@ -839,39 +847,91 @@ TODO
 \end{frame}
 
 
-\subsection{Resultados esperados}
-\begin{frame}{Resultados esperados}
-  \begin{itemize}
-    \item Implementar uma camada abstrata para o registro temporal dos eventos decorrentes do 
-    processamento do programa de controle num\'erico.
-    \item Implementar um aplicativo para o processamento de dialetos de programas de controle 
-    num\'erico industriais.
-    \item Publicar artigo em anais de congressos cient\'ificos.
-    \item Publicar artigo em revista cient\'ifica.
-    \item Fazer o registro do software desenvolvido.
-  \end{itemize}
+\subsection{Estudo de Caso}
+
+\begin{frame}
+  \frametitle{Estudo de Caso}
+
+    TODO
+
 \end{frame}
 
 
-\subsection{Resultados já alcançados}
-\begin{frame}{Resultados já alcançados}
-  \begin{itemize}
-    \item {
-      A metodologia para a transpila\c c\~ao do arquivo CN para as Fun\c c\~oes Can\^onicas de Usinagem 
-      foi publicada em um artigo cient\'ifico para o 26\textordmasculine Congresso Internacional de 
-      Engenharia Mec\^anica (COBEM 2021), realizado entre os dias 22 e 26 de Novembro de 2021.
-      O t\'itulo do artigo publicado foi \emph{Transpilation from NC Files to Canonical 
-      Machining Functions}.
-    }
-    \item {
-      Outro resultado j\'a alcan\c cado, no contexto do projeto proposto, foi a contribui\c c\~ao no 
-      trabalho do mestrando Vin\'icius Otto Mehl, com o t\'itulo 
-      \emph{Avalia\c c\~ao em tempo real da efetividade global de uma linha de usinagem do tipo transfer}.
-    }
-  \end{itemize}
+\subsection{Conclusão}
+
+\begin{frame}
+  \frametitle{Conclusão}
+
+    TODO
+
 \end{frame}
 
 
+\end{document}
+
+
+% Transpila\c c\~ao (ou transcompila\c c\~ao, ou compila\c c\~ao de fonte para fonte) refere-se ao processo de 
+% tradu\c c\~ao de c\'odigo-fonte escrito em uma determinada linguagem para uma outra. Portanto, o transcompilador 
+% \'e um tipo especial de compilador.
+
+
+% Para o desenvolvimento do transpilador foi utilizada uma abordagem baseada em An\'alise Sint\'atica 
+% (comumente encontrada em compiladores) e um modelo orientado a objetos.
+% O algoritmo projetado funciona como um compilador de linguagem de programa\c c\~ao.
+% O mecanismo de transpila\c c\~ao \'e baseado em um fluxo de duas etapas.
+% A primeira fase, chamada de Scanner, l\^e a entrada e traduz as strings em tokens. Uma ferramenta chamada Lex
+% foi utilizada para a implementa\c c\~ao do Scanner.
+
+
+%\subsection{Funções Canônicas de Usinagem}
+
+%\subsection{Origem}
+%   \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.4\textwidth}
+%       \includegraphics[width=4.5cm]{ncparser-class-transpiler.png}
+%     \end{subfigure}
+%     %\qquad
+%     \begin{subfigure}[b]{0.8\textwidth}
+%       \includegraphics[width=6.5cm]{ncparser-class-transpiler-factory.png}        
+%     \end{subfigure}
+%     %\caption{Diagrama de Classes}
+% \end{figure}
+
+
+% \subsection{Resultados esperados}
+% \begin{frame}{Resultados esperados}
+%   \begin{itemize}
+%     \item Implementar uma camada abstrata para o registro temporal dos eventos decorrentes do 
+%     processamento do programa de controle num\'erico.
+%     \item Implementar um aplicativo para o processamento de dialetos de programas de controle 
+%     num\'erico industriais.
+%     \item Publicar artigo em anais de congressos cient\'ificos.
+%     \item Publicar artigo em revista cient\'ifica.
+%     \item Fazer o registro do software desenvolvido.
+%   \end{itemize}
+% \end{frame}
+
+
+
+
+% \subsection{Resultados já alcançados}
+% \begin{frame}{Resultados já alcançados}
+%   \begin{itemize}
+%     \item {
+%       A metodologia para a transpila\c c\~ao do arquivo CN para as Fun\c c\~oes Can\^onicas de Usinagem 
+%       foi publicada em um artigo cient\'ifico para o 26\textordmasculine Congresso Internacional de 
+%       Engenharia Mec\^anica (COBEM 2021), realizado entre os dias 22 e 26 de Novembro de 2021.
+%       O t\'itulo do artigo publicado foi \emph{Transpilation from NC Files to Canonical 
+%       Machining Functions}.
+%     }
+%     \item {
+%       Outro resultado j\'a alcan\c cado, no contexto do projeto proposto, foi a contribui\c c\~ao no 
+%       trabalho do mestrando Vin\'icius Otto Mehl, com o t\'itulo 
+%       \emph{Avalia\c c\~ao em tempo real da efetividade global de uma linha de usinagem do tipo transfer}.
+%     }
+%   \end{itemize}
+% \end{frame}
 
 
 % \subsection{Estudo de Caso}
@@ -956,34 +1016,3 @@ TODO
   % \end{frame}
 
   % }
-
-\end{document}
-
-
-% Transpila\c c\~ao (ou transcompila\c c\~ao, ou compila\c c\~ao de fonte para fonte) refere-se ao processo de 
-% tradu\c c\~ao de c\'odigo-fonte escrito em uma determinada linguagem para uma outra. Portanto, o transcompilador 
-% \'e um tipo especial de compilador.
-
-
-% Para o desenvolvimento do transpilador foi utilizada uma abordagem baseada em An\'alise Sint\'atica 
-% (comumente encontrada em compiladores) e um modelo orientado a objetos.
-% O algoritmo projetado funciona como um compilador de linguagem de programa\c c\~ao.
-% O mecanismo de transpila\c c\~ao \'e baseado em um fluxo de duas etapas.
-% A primeira fase, chamada de Scanner, l\^e a entrada e traduz as strings em tokens. Uma ferramenta chamada Lex
-% foi utilizada para a implementa\c c\~ao do Scanner.
-
-
-%\subsection{Funções Canônicas de Usinagem}
-
-%\subsection{Origem}
-%   \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}[b]{0.4\textwidth}
-%       \includegraphics[width=4.5cm]{ncparser-class-transpiler.png}
-%     \end{subfigure}
-%     %\qquad
-%     \begin{subfigure}[b]{0.8\textwidth}
-%       \includegraphics[width=6.5cm]{ncparser-class-transpiler-factory.png}        
-%     \end{subfigure}
-%     %\caption{Diagrama de Classes}
-% \end{figure}
