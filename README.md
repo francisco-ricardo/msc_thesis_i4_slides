@@ -1,5 +1,8 @@
 #
 
+- Evidenciar o problema
+- Justificativa
+- Logo do ppgem
   
 ## CONTAINER
 
