@@ -65,7 +65,7 @@
   %\vfill
 }
 \makeatother
-\title{INTERPRETAÇÃO DOS DIALETOS RS274-D E EXTRAÇÃO DOS DADOS
+\title{INTEPRETAÇÃO DOS DIALETOS RS274-D E EXTRAÇÃO DOS DADOS 
 TEMPORAIS DA USINAGEM EM MÁQUINAS CNC}
 %\subtitle{Subtítulo}
 \author{\textbf{Francisco Ricardo Taborda Aguiar}}
@@ -330,18 +330,26 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
+\subsection{Interoperabilidade}
+
 \begin{frame}{Interoperabilidade}
 
   \begin{itemize}
     
     \item {
       A diversidade dos dialetos resultaram na falta de interoperabilidade
-      entre os sistemas \emph{CN}.
+      entre as máquinas \emph{CN}.
     }
 
     \item {
       A mesma pe\c ca necessita de programas diferentes para ser usinada 
       em m\'aquinas de fornecedores diferentes.
+    }
+
+    \item {
+      A integração entre os sistemas \emph{CN} com outros sistemas 
+      (\emph{CAPP}, por exemplo) são comprometidos pela falta de 
+      interoperabilidade.
     }
 
   \end{itemize}   
@@ -350,6 +358,10 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \section{Alternativas}
+
+\subsection{Pós-processadores}
+
+\subsection{MT Connect}
 
 \subsection{Padrão STEP-NC}
 
@@ -446,7 +458,80 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\subsection{Funções Canônicas de Usinagem}
+\section{Projeto proposto}
+
+\subsection{Objetivo}
+
+\begin{frame}{Objetivo Geral}
+  \begin{itemize}
+    \item { 
+      Desenvolver uma metodologia para interpretar os diferentes dialetos 
+      do formato \emph{RS274-D} e gerar um modelo granular de dados, no qual 
+      cada movimento da m\'aquina \'e registrado com uma marcação de tempo.
+    }
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivos Específicos}
+  \begin{itemize}
+    \item Projetar uma estrutura de dados que contemple dois objetivos:
+    \begin{itemize}
+        \item Possibilitar o registro temporal dos eventos decorrentes do 
+              processamento do programa de controle numérico.
+        \item Formar uma camada abstrata de dados que possa ser utilizada
+              para tratar das questões da interoperabilidade entre os 
+              dialetos.
+    \end{itemize}
+    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
+    \item Implementar um estudo de caso a partir de um dialeto específico.
+\end{itemize}
+\end{frame}
+
+
+\subsection{Metodologia}
+
+\begin{frame}{Módulos}
+  \begin{enumerate}
+    \item {
+      \emph{Transpiler}: 
+      \begin{itemize}
+        \item Interpretar o formato \emph{RS274-D};
+        \item Adaptável aos diversos dialetos RS274-D;
+        \item Elevar o nível de abstração dos dados para um formato 
+              neutro (independente de tecnologias proprietárias).
+        \item Processar o formato neutro e gerar as marcações de tempo.
+      \end{itemize}
+    }
+
+    \item {
+      \emph{Persistence}:
+      \begin{itemize}
+        \item Armazenar e restaurar os dados do tipo \emph{Payload}.
+        \item Foi definida uma arquitetura orientada a documentos 
+              (\emph{NoSQL}) para o banco de dados, pois o sistema 
+              proposto não apresenta uma natureza relacional.
+      \end{itemize}
+    }
+
+    \item {
+      \emph{Output}
+      \begin{itemize}
+        \item Interpretar a lista de objetos \emph{Payload} 
+              e gerar dois tipos de saída:
+        \begin{itemize}
+              \item Um arquivo com os dados temporais da usinagem. 
+                    Em formato \emph{CSV}, para facilitar a importação 
+                    do arquivo em softwares de análise de dados.
+              \item Um arquivo em formato de Funções Canônicas de Usinagem.
+        \end{itemize}
+      \end{itemize}
+    }
+
+  \end{enumerate}
+\end{frame}
+
+TODO
+
 
 \begin{frame}{Funções Canônicas de Usinagem}
   \begin{itemize}
@@ -564,79 +649,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\section{Projeto proposto}
 
-\subsection{Objetivo}
-
-\begin{frame}{Objetivo Geral}
-  \begin{itemize}
-    \item { 
-      Desenvolver uma metodologia para interpretar os diferentes dialetos 
-      do formato \emph{RS274-D} e gerar um modelo granular de dados, no qual 
-      cada movimento da m\'aquina \'e registrado com uma marcação de tempo.
-    }
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Objetivos Específicos}
-  \begin{itemize}
-    \item Projetar uma estrutura de dados que contemple dois objetivos:
-    \begin{itemize}
-        \item Possibilitar o registro temporal dos eventos decorrentes do 
-              processamento do programa de controle numérico.
-        \item Formar uma camada abstrata de dados que possa ser utilizada
-              para tratar das questões da interoperabilidade entre os 
-              dialetos.
-    \end{itemize}
-    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
-    \item Implementar um estudo de caso a partir de um dialeto específico.
-\end{itemize}
-\end{frame}
-
-
-\subsection{Metodologia}
-
-\begin{frame}{Módulos}
-  \begin{enumerate}
-    \item {
-      \emph{Transpiler}: 
-      \begin{itemize}
-        \item Interpretar o formato \emph{RS274-D};
-        \item Adaptável aos diversos dialetos RS274-D;
-        \item Elevar o nível de abstração dos dados para um formato 
-              neutro (independente de tecnologias proprietárias).
-        \item Processar o formato neutro e gerar as marcações de tempo.
-      \end{itemize}
-    }
-
-    \item {
-      \emph{Persistence}:
-      \begin{itemize}
-        \item Armazenar e restaurar os dados do tipo \emph{Payload}.
-        \item Foi definida uma arquitetura orientada a documentos 
-              (\emph{NoSQL}) para o banco de dados, pois o sistema 
-              proposto não apresenta uma natureza relacional.
-      \end{itemize}
-    }
-
-    \item {
-      \emph{Output}
-      \begin{itemize}
-        \item Interpretar a lista de objetos \emph{Payload} 
-              e gerar dois tipos de saída:
-        \begin{itemize}
-              \item Um arquivo com os dados temporais da usinagem. 
-                    Em formato \emph{CSV}, para facilitar a importação 
-                    do arquivo em softwares de análise de dados.
-              \item Um arquivo em formato de Funções Canônicas de Usinagem.
-        \end{itemize}
-      \end{itemize}
-    }
-
-  \end{enumerate}
-\end{frame}
-
-TODO
 
 \begin{frame}{Interpretação}
   \begin{itemize}
