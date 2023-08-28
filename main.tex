@@ -525,6 +525,123 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
+\subsection{Funções Canônicas de Usinagem}
+
+\begin{frame}{Funções Canônicas de Usinagem}
+  \begin{itemize}
+    \item{
+      A Intelligente Systems Division (ISD) do National Institute of 
+      Standards and Technology (NIST) trabalhou no projeto 
+      Enhanced Machine Controller (EMC), de forma colaborativa com 
+      outros parceiros.
+    }
+    \item {
+      O objetivo do projeto foi construir um padrão de interface de 
+      programação de aplicações (API) para controladores de máquinas 
+      com arquitetura aberta. 
+      Além disto, demonstrar as implementações da arquitetura do 
+      Next Generation Controller (NGC).
+    }
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Objetivos}
+  \begin{itemize}    
+    \item {
+      As Funções Canônicas de Usinagem (do Inglês, CMF, Canonical 
+      Machining Functions) foram projetadas com três objetivos em mente.
+      \begin{itemize}        
+        \item {
+          Todas as funcionalidades dos centros de usinagem de 3 a 6 
+          eixos devem ser cobertas pelos comandos.
+        }
+        \item {
+          Os comandos canônicos de movimento devem ser portáveis para 
+          serem reconhecidos em placas de controle comerciais 
+          disponíveis no mercado.         
+        }
+        \item {
+          Deve ser possível interpretar comandos RS274-D em chamadas de 
+          Funções Canônicas de Usinagem.
+        }
+      \end{itemize}
+    }
+    \item {
+      O projeto EMC e outros projetos abertos de pesquisa em máquinas 
+      CNC utilizam CMFs.
+    }
+    \item {
+      As Funções Canônicas de Usinagem consistem em comandos atômicos.
+      Os comandos RS274-D podem ser decompostos em várias chamadas de CMFs.
+    }
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Exemplos de comandos}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{p{7cm}|p{5cm}}
+
+      \hline
+      \bfseries{\scriptsize{Comandos}} & \bfseries{\scriptsize{Prop\'osito}} \\
+
+      \hline  
+      \scriptsize{SET\_TRAVERSE\_RATE (double \emph{rate})} 
+      & \scriptsize{Define o valor superior da velocidade do movimento de aproxima\c c\~ao 
+      que ser\'a utilizado durante os movimentos r\'apidos que ocorrem, normalmente, quando 
+      o equipamento n\~ao est\'a fazendo opera\c c\~oes de corte.} \\
+
+      \hline      
+      \scriptsize{STRAIGHT\_TRAVERSE (double \emph{x}, double \emph{y}, double \emph{z}, 
+      double \emph{a}, double \emph{b}, double \emph{c})} 
+      & \scriptsize{Faz um movimento de posicionamento linear a partir da posi\c c\~ao 
+      atual at\'e o ponto definido por \emph{x}, \emph{y}, \emph{z}, \emph{a}, \emph{b} e \emph{c}.
+      \'E esperado que n\~ao ocorra opera\c c\~ao de corte durante o movimento de travessia.} \\
+
+      \hline  
+      \scriptsize{SET\_FEED\_RATE (double \emph{rate})}
+      & \scriptsize{Define a velocidade de avan\c co.} \\
+
+      \hline  
+      \scriptsize{STRAIGHT\_FEED (double \emph{x}, double \emph{y}, double \emph{z}, 
+      double \emph{a}, double \emph{b}, double \emph{c})} 
+      & \scriptsize{Move em linha reta, na velocidade de avan\c co previamente definida, 
+      a partir da posi\c c\~ao atual at\'e a 
+      posi\c c\~ao dada por \emph{x}, \emph{y} e \emph{z}.} \\
+
+      \hline  
+      \scriptsize{SET\_SPINDLE\_SPEED (double \emph{speed})} 
+      & \scriptsize{Define a velocidade de rotação} \\
+
+      \hline
+
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+
+\begin{frame}{Considerações}
+
+  \begin{itemize}
+    \item Assim como ocorre com o \emph{STEP-NC}, o formato baseado nas 
+          Funções Canônicas de Usinagem não tem sido amplamente adotado 
+          entre os controladores de CNC comerciais.
+    \item A atomicidade das Funções Canônicas de Usinagem representa uma 
+          característica interessante para o registro temporal de cada 
+          evento que ocorre na máquina-ferramenta durante o processamento 
+          do programa.
+    \item A simplicidade da sintaxe e a padronização das chamadas de 
+          funções são pontos positivos para a construção de uma camada 
+          de abstração a partir das Funções Canônicas de Usinagem.
+    \emph{CN}.
+
+  \end{itemize}
+
+\end{frame}
+
+
 \section{Projeto proposto}
 
 \subsection{Objetivo}
@@ -598,124 +715,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 TODO
-
-
-\begin{frame}{Funções Canônicas de Usinagem}
-  \begin{itemize}
-    \item{
-      A Intelligente Systems Division (ISD) do National Institute of Standards and Technology (NIST) 
-      trabalhou no projeto Enhanced Machine Controller (EMC), de forma colaborativa com outros parceiros.
-    }
-    \item {
-      O objetivo do projeto foi construir um padrão de interface de programação de aplicações 
-      (API) para controladores de máquinas com arquitetura aberta. 
-      Além disto, demonstrar as implementações da arquitetura do Next Generation Controller (NGC).
-    }
-    \item {
-      A arquitetura NGC utiliza a linguagem RS274/NGC, um dialeto do padrão RS274-D.
-    }
-    \item {
-      O interpretador RS274/VGER foi desenvolvido pelo NIST para converter programas escritos no dialeto 
-      RS274/NGC para Funções Canônicas de Usinagem.
-    }
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Funções Canônicas de Usinagem: Objetivos}
-  \begin{itemize}    
-    \item {
-      As Funções Canônicas de Usinagem (do Inglês, CMF, Canonical Machining Functions)
-      foram projetadas com três objetivos em mente.
-      \begin{itemize}        
-        \item {
-          Todas as funcionalidades dos centros de usinagem de 3 a 6 eixos devem ser
-          cobertas pelos comandos.
-        }
-        \item {
-          Os comandos canônicos de movimento devem ser portáveis para serem 
-          reconhecidos em placas de controle comerciais disponíveis no mercado.         
-        }
-        \item {
-          Deve ser possível interpretar comandos RS274-D em chamadas de 
-          Funções Canônicas de Usinagem.
-        }
-      \end{itemize}
-    }
-    \item {
-      O projeto EMC e outros projetos abertos de pesquisa em máquinas CNC utilizam CMFs.
-    }
-    \item {
-      As Funções Canônicas de Usinagem consistem em comandos atômicos.
-      Os comandos RS274-D podem ser decompostos em várias chamadas de CMFs.
-    }
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Funções Canônicas de Usinagem: Exemplos de comandos}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{p{7cm}|p{5cm}}
-
-      \hline
-      \bfseries{\scriptsize{Comandos}} & \bfseries{\scriptsize{Prop\'osito}} \\
-
-      \hline  
-      \scriptsize{SET\_TRAVERSE\_RATE (double \emph{rate})} 
-      & \scriptsize{Define o valor superior da velocidade do movimento de aproxima\c c\~ao 
-      que ser\'a utilizado durante os movimentos r\'apidos que ocorrem, normalmente, quando 
-      o equipamento n\~ao est\'a fazendo opera\c c\~oes de corte.} \\
-
-      \hline      
-      \scriptsize{STRAIGHT\_TRAVERSE (double \emph{x}, double \emph{y}, double \emph{z}, 
-      double \emph{a}, double \emph{b}, double \emph{c})} 
-      & \scriptsize{Faz um movimento de posicionamento linear a partir da posi\c c\~ao 
-      atual at\'e o ponto definido por \emph{x}, \emph{y}, \emph{z}, \emph{a}, \emph{b} e \emph{c}.
-      \'E esperado que n\~ao ocorra opera\c c\~ao de corte durante o movimento de travessia.} \\
-
-      \hline  
-      \scriptsize{SET\_FEED\_RATE (double \emph{rate})}
-      & \scriptsize{Define a velocidade de avan\c co.} \\
-
-      \hline  
-      \scriptsize{STRAIGHT\_FEED (double \emph{x}, double \emph{y}, double \emph{z}, 
-      double \emph{a}, double \emph{b}, double \emph{c})} 
-      & \scriptsize{Move em linha reta, na velocidade de avan\c co previamente definida, 
-      a partir da posi\c c\~ao atual at\'e a 
-      posi\c c\~ao dada por \emph{x}, \emph{y} e \emph{z}.} \\
-
-      \hline  
-      \scriptsize{SET\_SPINDLE\_SPEED (double \emph{speed})} 
-      & \scriptsize{Define a velocidade de rotação} \\
-
-      \hline
-
-    \end{tabular}
-  \end{table}
-\end{frame}
-
-
-\begin{frame}{Considerações}
-
-  \begin{itemize}
-    \item Assim como ocorre com o \emph{STEP-NC}, o formato baseado nas 
-          Funções Canônicas de Usinagem não tem sido amplamente adotado 
-          entre os controladores de CNC comerciais.
-    \item A atomicidade das Funções Canônicas de Usinagem representa uma 
-          característica interessante para o registro temporal de cada 
-          evento que ocorre na máquina-ferramenta durante o processamento 
-          do programa.
-    \item A simplicidade da sintaxe e a padronização das chamadas de 
-          funções são pontos positivos para a construção de uma camada 
-          de abstração a partir das Funções Canônicas de Usinagem.
-    \emph{CN}.
-
-  \end{itemize}
-
-\end{frame}
-
-
 
 
 \begin{frame}{Interpretação}
