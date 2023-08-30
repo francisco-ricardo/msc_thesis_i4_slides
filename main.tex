@@ -737,7 +737,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 
-\begin{frame}{Interpretação}
+\begin{frame}{Transpiler}
   \begin{itemize}
     \item Abordagem baseada em um fluxo de duas etapas:
     \begin{enumerate}
@@ -748,7 +748,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Interpretação: Etapa 1}
+\begin{frame}{Etapa 1}
   \begin{itemize}
     \item A primeira etapa (\emph{Scanner}) l\^e a entrada e traduz as 
           cadeias de caracteres em símbolos (tokens). 
@@ -760,7 +760,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \begin{frame}[fragile]
-  \frametitle{Interpretação: Exemplo de Expressões Regulares}
+  \frametitle{Exemplo de Expressões Regulares}
   \begin{example}
       "G1X10.Y3.5Z-1.F505"
       \begin{lstlisting}
@@ -794,7 +794,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Interpretação: Etapa 2}
+\begin{frame}{Etapa 2}
   \begin{itemize}
     \item A segunda etapa (\emph{Parser}) agrupa os símbolos em unidades 
           sint\'aticas (no caso, blocos de comandos).
@@ -816,7 +816,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \begin{frame}[fragile]
-  \frametitle{Interpretação: Exemplo de Especificação BNF}
+  \frametitle{Exemplo de Especificação BNF}
   \begin{example}
    "G1X10.Y3.5Z-1.F505"
     \begin{lstlisting}
@@ -834,37 +834,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Abstração}
-  \begin{itemize}
-    \item Formato de dados escolhido: Funções Canônicas de Usinagem.
-    \begin{itemize}
-      \item Formato Padronizado.
-      \item Capaz de descrever cada movimento feito durante a usinagem.
-    \end{itemize}
-    \item Modelagem Orientada a Objetos.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Abstração: Modelo Orientado a Objetos}
-  Fonte: Autor.
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=6.2cm]{ncparser-class-transpiler.png}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Abstração: Modelo Orientado a Objetos}
-  Fonte: Autor.
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=10.5cm]{ncparser-class-transpiler-factory.png}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Abstração: Exemplo de Transpilação para Funções Canônicas de Usinagem}
+\begin{frame}{Exemplo de Transpilação para Funções Canônicas de Usinagem}
   \scriptsize{Fonte: Autor.}
   \begin{table}[H]
     \centering
@@ -901,72 +871,89 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Processamento}
-  \begin{itemize}
-    \item Processar as Funções Canônicas.
-    \begin{itemize}
-      \item As Fun\c c\~oes Can\^onicas de Usinagem consiste em um formato padronizado (API).
-      \item Comandos atômicos.
-    \end{itemize}
-    \item Gerar o arquivo com as marcações de tempo.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Processamento}
-  \begin{itemize}
-    \item Expressões Regulares para extrair os símbolos.
-    \item Gramática Livre de Contexto + Algoritmo LR para processar.
-    \item Abordagem Orientada a Objetos.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]
-  \frametitle{Processamento: Exemplo de Expressão Regular}
-    \begin{example}
-      STRAIGHT\_FEED(10.0, 3.5, -1.0)
-        \begin{lstlisting}
-          LPAR = '('
-          RPAR = ')'    
-          DOUBLE = '[+-]?[0-9]+[.]?[0-9]*'
-          INT = '[0-9]+'
-          COMMA = '[,]\s*'
-        \end{lstlisting}
-      \end{example}
-\end{frame}
-
-
-\begin{frame}[fragile]
-  \frametitle{Processamento: Exemplo de Especificação BNF}
-  \begin{example}
-    STRAIGHT\_FEED(10.0, 3.5, -1.0)
-    \begin{lstlisting}[basicstyle=\tiny]
-      machining : "STRAIGHT_FEED" LPAR position RPAR
-
-      position : DOUBLE COMMA DOUBLE COMMA DOUBLE
-               | DOUBLE COMMA DOUBLE COMMA DOUBLE COMMA DOUBLE COMMA DOUBLE COMMA DOUBLE
-    \end{lstlisting}
-  \end{example}  
-\end{frame}
-
-
-\begin{frame}{Processamento: Modelo Orientado a Objetos}
-  Fonte: Autor.
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=11.0cm]{ncparser-class-canonical-parser.png}
-  \end{figure}
-\end{frame}
-
-
 \subsection{Estudo de Caso}
 
 \begin{frame}
   \frametitle{Estudo de Caso}
+  \framesubtitle{Implementação}
 
-    TODO
+  \begin{itemize}
+    \item Implementação do \emph{Transpiler} em \emph{C} e \emph{C++}.
+    \item Ambiente de desenvolvimento em \emph{Docker}, 
+          imagem \emph{Debian Bullseye}.
+    \item \emph{IDE Microsoft Visual Studio Code}.
+    \item Compilador \emph{GCC}.
+    \item O foco da implementação foi testar o processo de transpilação 
+          e avaliar os resultados obtidos com esse processo.
+  \end{itemize}
+
+  \end{frame}
+
+
+\begin{frame}
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Protótipo}
+
+  \begin{itemize}
+    \item Controlador de CNC modelo \emph{Mach-9}, fornecedor 
+          \emph{Romi - Brasil}, disponível em um centro de usinagem de
+           três eixos modelo \emph{Discovery 4022}.
+    \item O controlador \emph{Mach-9} utiliza um dialeto do padrão 
+          \emph{RS274-D}.
+    \item O programa \emph{CN} foi gerado no software \emph{CAM} 
+          \emph{Edgecam 2019 R2} (\emph{Hexagon} - Suécia), que tem um 
+          pós-processador para o dialeto \emph{Mach-9}.
+  \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Anaálise Léxica}
+  \begin{itemize}
+    \item A implementação do \emph{Scanner} utilizou o software 
+          \emph{Flex} e Expressões Regulares para extrair os símbolos.
+    \item Exemplos:
+      \begin{itemize}
+        \item Select tool: \emph{[T][0]?[1-9]+}
+        \item Change tool: \emph{[M][0]?[6]}
+        \item Set spindle speed: \emph{[S][0-9]+}
+        \item Spindle clockwise: \emph{[M][0]?[3]}
+      \end{itemize}  
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Anaálise Sintática}
+  \begin{itemize}
+    \item A implementação do \emph{Parser} utilizou o software 
+          \emph{Bison}.
+    \item Foi definida a Gramática Livre de Contxto de acordo com o 
+          dialeto \emph{Mach-9} e um algoritmo \emph{LR}
+          para processar os símbolos.
+    \item Exemplos da Gramática Livre de Contextos:
+      \begin{lstlisting}
+        spindle : SET_SPINDLE_SPEED
+        | SPINDLE_CLOCKWISE
+        | SPINDLE_COUNTER_CLOCKWISE
+        | SET_SPINDLE_SPEED SPINDLE_CLOCKWISE
+        | SET_SPINDLE_SPEED SPINDLE_COUNTER_CLOCKWISE
+        | STOP_SPINDLE_TURNING
+      
+        tool : SELECT_TOOL
+        | SELECT_TOOL CHANGE_TOOL    
+    \end{lstlisting}
+  \end{itemize}
+
+\end{frame}  
+
+
+
+
 
 
 \subsection{Conclusão}
