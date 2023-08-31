@@ -127,9 +127,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \item {
     Em 1982 o padrão foi adotado pela ISO sendo chamado de ISO 6983.
   }
-  \item {
-    O arquivo descreve o percurso da ferramenta com relação aos eixos.
-  }
   \end{itemize}
 \end{frame}
 
@@ -735,8 +732,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-
-
 \begin{frame}{Transpiler}
   \begin{itemize}
     \item Abordagem baseada em um fluxo de duas etapas:
@@ -834,43 +829,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Exemplo de Transpilação para Funções Canônicas de Usinagem}
-  \scriptsize{Fonte: Autor.}
-  \begin{table}[H]
-    \centering
-    \begin{tabular}{ |l|l| } 
-      \hline
-      \tiny{\bfseries{Mach9}} & \tiny{\bfseries{Funções Canônicas de Usinagem}} \\
-      \hline
-      \tiny{O3S1857M3} & \tiny{SET\_SPINDLE\_SPEED(1857.0)} \\
-      & \tiny{START\_SPINDLE\_CLOCKWISE()} \\
-      \hline
-      \tiny{G0X-15.Y-65.Z3.} & \tiny{STRAIGHT\_TRAVERSE(-15.0, -65.0, 3.0)} \\
-      \hline
-      \tiny{X-15.Y-65.Z5.} & \tiny{STRAIGHT\_TRAVERSE(-15.0, -65.0, 5.0)} \\
-      \hline
-      \tiny{G81Z-8.R3.F186} & \tiny{STRAIGHT\_TRAVERSE(-15.0, -65.0, 3.0)} \\
-      \tiny{G25X30.Y130.I2J2} & \tiny{SET\_FEED\_RATE(186.0)} \\
-      \tiny{G80} & \tiny{STRAIGHT\_FEED(-15.0, -65.0, -8.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(-15.0, -65.0, 3.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(15.0, -65.0, 3.0)} \\
-      & \tiny{SET\_FEED\_RATE(186.0)} \\
-      & \tiny{STRAIGHT\_FEED(15.0, -65.0, -8.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(15.0, -65.0, 3.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(15.0, 65.0, 3.0)} \\
-      & \tiny{SET\_FEED\_RATE(186.0)} \\
-      & \tiny{STRAIGHT\_FEED(15.0, 65.0, -8.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(15.0, 65.0, 3.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(-15.0, 65.0, 3.0)} \\
-      & \tiny{SET\_FEED\_RATE(186.0)} \\
-      & \tiny{STRAIGHT\_FEED(-15.0, 65.0, -8.0)} \\
-      & \tiny{STRAIGHT\_TRAVERSE(-15.0, 65.0, 3.0)} \\
-      \hline    
-    \end{tabular}    
-  \end{table}
-\end{frame}
-
-
 \subsection{Estudo de Caso}
 
 \begin{frame}
@@ -910,7 +868,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \begin{frame}
   \frametitle{Estudo de Caso}
-  \framesubtitle{Anaálise Léxica}
+  \framesubtitle{Análise Léxica}
   \begin{itemize}
     \item A implementação do \emph{Scanner} utilizou o software 
           \emph{Flex} e Expressões Regulares para extrair os símbolos.
@@ -928,11 +886,11 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \begin{frame}[fragile]
   \frametitle{Estudo de Caso}
-  \framesubtitle{Anaálise Sintática}
+  \framesubtitle{Análise Sintática}
   \begin{itemize}
     \item A implementação do \emph{Parser} utilizou o software 
           \emph{Bison}.
-    \item Foi definida a Gramática Livre de Contxto de acordo com o 
+    \item Foi definida a Gramática Livre de Contexto de acordo com o 
           dialeto \emph{Mach-9} e um algoritmo \emph{LR}
           para processar os símbolos.
     \item Exemplos da Gramática Livre de Contextos:
@@ -952,8 +910,370 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}  
 
 
+\begin{frame}[fragile]
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Trecho do programa \emph{CN}}
+
+  A tabela abaixo apresenta um trecho do programa \emph{CN}.
+
+  \vspace{3mm}
+
+  \begin{tabular}{l|l}
+    \hline
+    \scriptsize{\bfseries{NÚMERO DA LINHA}} & 
+    \scriptsize{\bfseries{G-CODE}} \\
+    \hline
+
+    \scriptsize{1} & \scriptsize{T3M6} \\    
+    \hline
+
+    \scriptsize{2} & \scriptsize{O3S1857M3} \\
+    \hline
+
+    \scriptsize{3} & \scriptsize{G0X-15.Y-65.Z3.} \\
+    \hline
+      
+    \scriptsize{4} & \scriptsize{X-15.Y-65.Z5.} \\
+    \hline
+
+    \scriptsize{5} & \scriptsize{G81Z-8.R3.F186} \\
+    \hline
+
+    \scriptsize{6} & \scriptsize{G25X30.Y130.I2J2} \\
+    \hline
+
+    \scriptsize{7} & \scriptsize{G80} \\
+    \hline
+
+    \scriptsize{8} & \scriptsize{M5} \\
+    \hline
+      
+  \end{tabular}
+
+\end{frame}  
 
 
+\begin{frame}[fragile]
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Resultados e Discussões}
+
+  As tabelas a seguir apresentam os campos mais relevantes que são 
+  resultado da transpilação dos blocos 5, 6 e 7 do programa \emph{CN}.
+
+  \vspace{3mm}
+
+  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+
+    \hline
+
+    \tiny{\bfseries{function\_name}} & 
+    \tiny{\bfseries{x1}} & 
+    \tiny{\bfseries{y1}} & 
+    \tiny{\bfseries{z1}} & 
+    \tiny{\bfseries{feed}} & 
+    \tiny{\bfseries{speed}} & 
+    \tiny{\bfseries{tool}} & 
+    \tiny{\bfseries{time}} & 
+    \tiny{\bfseries{timestamp}} \\
+    \hline
+
+    \tiny{\bfseries{SELECT\_TOOL}} & 
+    \tiny{\bfseries{-9.0}} & 
+    \tiny{\bfseries{15.59}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{7}} & 
+    \tiny{\bfseries{91.191}} \\    
+    \hline
+
+    \tiny{\bfseries{CHANGE\_TOOL}} & 
+    \tiny{\bfseries{-9.0}} & 
+    \tiny{\bfseries{15.59}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{91.191}} \\
+    \hline
+
+    \tiny{\bfseries{SET\_SPINDLE\_SPEED}} & 
+    \tiny{\bfseries{-9.0}} & 
+    \tiny{\bfseries{15.59}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{91.191}} \\
+    \hline
+
+    \tiny{\bfseries{START\_SPINDLE\_CLOCKWISE}} & 
+    \tiny{\bfseries{-9.0}} & 
+    \tiny{\bfseries{15.59}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{2}} & 
+    \tiny{\bfseries{93.191}} \\
+    \hline    
+
+    \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+    \tiny{\bfseries{-15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{15000}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0.323}} & 
+    \tiny{\bfseries{93.515}} \\
+    \hline
+
+    \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+    \tiny{\bfseries{-15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{5.0}} & 
+    \tiny{\bfseries{15000}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0.008}} & 
+    \tiny{\bfseries{93.523}} \\
+    \hline
+
+    \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+    \tiny{\bfseries{-15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{15000}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0.008}} & 
+    \tiny{\bfseries{93.531}} \\
+    \hline
+
+    \tiny{\bfseries{SET\_FEED\_RATE}} & 
+    \tiny{\bfseries{-15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{186}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0}} & 
+    \tiny{\bfseries{93.531}} \\
+    \hline
+
+    \tiny{\bfseries{STRAIGHT\_FEED}} & 
+    \tiny{\bfseries{-15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{-8.0}} & 
+    \tiny{\bfseries{186}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{3.548}} & 
+    \tiny{\bfseries{97.079}} \\
+    \hline    
+
+    \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+    \tiny{\bfseries{-15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{15000}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0.044}} & 
+    \tiny{\bfseries{97.123}} \\
+    \hline    
+
+    \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+    \tiny{\bfseries{15.0}} & 
+    \tiny{\bfseries{-65.0}} & 
+    \tiny{\bfseries{3.0}} & 
+    \tiny{\bfseries{15000}} & 
+    \tiny{\bfseries{1857}} & 
+    \tiny{\bfseries{3}} & 
+    \tiny{\bfseries{0.12}} & 
+    \tiny{\bfseries{97.243}} \\
+    \hline
+
+  \end{tabular}
+
+\end{frame}  
+
+
+\begin{frame}[fragile]
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Resultados e Discussões}
+
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+
+      \hline
+
+      \tiny{\bfseries{function\_name}} & 
+      \tiny{\bfseries{x1}} & 
+      \tiny{\bfseries{y1}} & 
+      \tiny{\bfseries{z1}} & 
+      \tiny{\bfseries{feed}} & 
+      \tiny{\bfseries{speed}} & 
+      \tiny{\bfseries{tool}} & 
+      \tiny{\bfseries{time}} & 
+      \tiny{\bfseries{timestamp}} \\
+      \hline
+    
+
+      \tiny{\bfseries{SET\_FEED\_RATE}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{-65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{186}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0}} & 
+      \tiny{\bfseries{97.243}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_FEED}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{-65.0}} & 
+      \tiny{\bfseries{-8.0}} & 
+      \tiny{\bfseries{186}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{3.548}} & 
+      \tiny{\bfseries{100.791}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{-65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{15000}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0.044}} & 
+      \tiny{\bfseries{100.835}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{15000}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0.52}} & 
+      \tiny{\bfseries{101.355}} \\
+      \hline    
+
+      \tiny{\bfseries{SET\_FEED\_RATE}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{186}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0}} & 
+      \tiny{\bfseries{101.355}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_FEED}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{-8.0}} & 
+      \tiny{\bfseries{186}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{3.548}} & 
+      \tiny{\bfseries{104.904}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+      \tiny{\bfseries{15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{15000}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0.044}} & 
+      \tiny{\bfseries{104.948}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+      \tiny{\bfseries{-15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{15000}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0.12}} & 
+      \tiny{\bfseries{105.068}} \\
+      \hline
+
+      \tiny{\bfseries{SET\_FEED\_RATE}} & 
+      \tiny{\bfseries{-15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{186}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0}} & 
+      \tiny{\bfseries{105.068}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_FEED}} & 
+      \tiny{\bfseries{-15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{-8.0}} & 
+      \tiny{\bfseries{186}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{3.548}} & 
+      \tiny{\bfseries{108.616}} \\
+      \hline
+
+      \tiny{\bfseries{STRAIGHT\_TRAVERSE}} & 
+      \tiny{\bfseries{-15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{15000}} & 
+      \tiny{\bfseries{1857}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{0.044}} & 
+      \tiny{\bfseries{108.660}} \\
+      \hline
+
+      \tiny{\bfseries{STOP\_SPINDLE\_TURNING}} & 
+      \tiny{\bfseries{-15.0}} & 
+      \tiny{\bfseries{65.0}} & 
+      \tiny{\bfseries{3.0}} & 
+      \tiny{\bfseries{0}} & 
+      \tiny{\bfseries{0}} & 
+      \tiny{\bfseries{3}} & 
+      \tiny{\bfseries{2}} & 
+      \tiny{\bfseries{110.660}} \\
+      \hline
+
+  \end{tabular}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Estudo de Caso}
+  \framesubtitle{Resultados e Discussões}
+
+  \begin{itemize}
+    \item A coluna \emph{time} correponde ao tempo de duração do evento 
+    que é definido pela coluna \emph{function\_name}.
+    \item A coluna \emph{timestamp}, por sua vez, consiste na 
+    marcação de tempo para a execução de cada evento.
+    \item Estes dados possibilitam a definição do momento em que os 
+          eventos devem ocorrer durante a usinagem.
+  \end{itemize}
+
+\end{frame}
 
 
 \subsection{Conclusão}
