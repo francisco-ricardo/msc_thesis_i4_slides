@@ -3,6 +3,8 @@
 - Evidenciar o problema
 - Justificativa
 - Logo do ppgem
+
+- Os slides devem ser organizados de acordo com o sumário
   
 ## CONTAINER
 

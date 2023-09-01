@@ -353,79 +353,42 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \end{frame}
 
-
-\section{Alternativas}
-
-
-\subsection{Pós-processadores}
-
-\begin{frame}{Pós-processadores}
-
+\subsection{Objetivos}
+\begin{frame}{Objetivo Geral}
   \begin{itemize}
-
-    \item {
-      São softwares ou sub-rotinas 
-      que convertem um arquivo gerado em um sistema \emph{CAM} 
-      em um programa que possa ser identificado em um 
-      determinado sistema \emph{CN}.
+    \item { 
+      Desenvolver uma metodologia para interpretar os diferentes dialetos 
+      do formato \emph{RS274-D} e gerar um modelo granular de dados, no qual 
+      cada movimento da m\'aquina \'e registrado com uma marcação de tempo.
     }
-    
-    \item {
-      Porém, há um número elevado tanto de sistemas
-      \emph{CAM} quanto de fornecedores de máquinas \emph{CNC}, 
-      o que faz com que a demanda por Pós-Processadores
-      tenha que ser muito alta.
-    }
+  \end{itemize}
+\end{frame}
 
-  \end{itemize}   
-
+\begin{frame}{Objetivos Específicos}
+  \begin{itemize}
+    \item Projetar uma estrutura de dados que contemple dois objetivos:
+    \begin{itemize}
+        \item Possibilitar o registro temporal dos eventos decorrentes do 
+              processamento do programa de controle numérico.
+        \item Formar uma camada abstrata de dados que possa ser utilizada
+              para tratar das questões da interoperabilidade entre os 
+              dialetos.
+    \end{itemize}
+    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
+    \item Implementar um estudo de caso a partir de um dialeto específico.
+\end{itemize}
 \end{frame}
 
 
-\subsection{MT Connect}
+\section{Revisão Bibliográfica}
 
-\begin{frame}{MT Connect}
+\subsection{Gêmeos Digitais}
 
-  \begin{itemize}
+\begin{frame}{Gêmeos Digitais}
 
-    \item {
-      MTConnect \'e um padr\~ao para a troca de dados e informa\c c\~oes 
-      que \'e baseado em um dicion\'ario de dados de termos que descrevem 
-      informa\c c\~oes associadas com as opera\c c\~oes da fabrica\c c\~ao.
-    }
+  TODO
 
-    \item {
-      Demanda a implanta\c c\~ao de adaptadores ou de sistemas 
-      invasivos para que ocorra a integra\c c\~ao dos dados.      
-    }   
-
-  \end{itemize}   
-
-\end{frame}
-
-
-\subsection{OPC-UA}
-
-\begin{frame}{OPC-UA}
-
-  \begin{itemize}
-
-    \item {
-      Especifica um modelo de informa\c c\~ao para a representa\c c\~ao 
-      de uma m\'aquina-ferramenta, fornecendo condi\c c\~oes para permitir
-      a troca de informa\c c\~oes entre uma m\'aquina-ferramenta e softwares
-      como MES, SCADA, ERP, ou sistemas de an\'alise de dados.
-    }
-
-    \item {
-      Disponível somente em equipamentos mais modernos e fornecedores 
-      específicos.
-    }
-
-  \end{itemize}   
-
-\end{frame}
-
+\end{frame}  
 
 \subsection{Padrão STEP-NC}
 
@@ -639,37 +602,92 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\section{Projeto proposto}
 
-\subsection{Objetivo}
 
-\begin{frame}{Objetivo Geral}
+\begin{frame}{Pós-processadores}
+
   \begin{itemize}
-    \item { 
-      Desenvolver uma metodologia para interpretar os diferentes dialetos 
-      do formato \emph{RS274-D} e gerar um modelo granular de dados, no qual 
-      cada movimento da m\'aquina \'e registrado com uma marcação de tempo.
+
+    \item {
+      São softwares ou sub-rotinas 
+      que convertem um arquivo gerado em um sistema \emph{CAM} 
+      em um programa que possa ser identificado em um 
+      determinado sistema \emph{CN}.
     }
-  \end{itemize}
+    
+    \item {
+      Porém, há um número elevado tanto de sistemas
+      \emph{CAM} quanto de fornecedores de máquinas \emph{CNC}, 
+      o que faz com que a demanda por Pós-Processadores
+      tenha que ser muito alta.
+    }
+
+  \end{itemize}   
+
 \end{frame}
 
-\begin{frame}{Objetivos Específicos}
+
+\begin{frame}{MT Connect}
+
   \begin{itemize}
-    \item Projetar uma estrutura de dados que contemple dois objetivos:
-    \begin{itemize}
-        \item Possibilitar o registro temporal dos eventos decorrentes do 
-              processamento do programa de controle numérico.
-        \item Formar uma camada abstrata de dados que possa ser utilizada
-              para tratar das questões da interoperabilidade entre os 
-              dialetos.
-    \end{itemize}
-    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
-    \item Implementar um estudo de caso a partir de um dialeto específico.
-\end{itemize}
+
+    \item {
+      MTConnect \'e um padr\~ao para a troca de dados e informa\c c\~oes 
+      que \'e baseado em um dicion\'ario de dados de termos que descrevem 
+      informa\c c\~oes associadas com as opera\c c\~oes da fabrica\c c\~ao.
+    }
+
+    \item {
+      Demanda a implanta\c c\~ao de adaptadores ou de sistemas 
+      invasivos para que ocorra a integra\c c\~ao dos dados.      
+    }   
+
+  \end{itemize}   
+
 \end{frame}
 
 
-\subsection{Metodologia}
+\begin{frame}{OPC-UA}
+
+  \begin{itemize}
+
+    \item {
+      Especifica um modelo de informa\c c\~ao para a representa\c c\~ao 
+      de uma m\'aquina-ferramenta, fornecendo condi\c c\~oes para permitir
+      a troca de informa\c c\~oes entre uma m\'aquina-ferramenta e softwares
+      como MES, SCADA, ERP, ou sistemas de an\'alise de dados.
+    }
+
+    \item {
+      Disponível somente em equipamentos mais modernos e fornecedores 
+      específicos.
+    }
+
+  \end{itemize}   
+
+\end{frame}
+
+
+
+\subsection{Transpilação}
+
+\begin{frame}
+  \frametitle{Transpilação}
+
+  TODO
+  Análise Léxica
+  Expressões Regulares
+  Análise Sintática
+  Gramática Livre de contexto
+  Algoritmo LR
+  
+
+\end{frame}
+
+
+
+
+\section{Metodologia}
 
 \begin{frame}{Módulos}
   \begin{enumerate}
@@ -829,7 +847,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\subsection{Estudo de Caso}
+\section{Estudo de Caso}
 
 \begin{frame}
   \frametitle{Estudo de Caso}
@@ -1276,7 +1294,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\subsection{Conclusão}
+\section{Conclusão}
 
 \begin{frame}
   \frametitle{Conclusão}
