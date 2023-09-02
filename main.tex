@@ -180,8 +180,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
     \item {
       Especifica um modelo de informa\c c\~ao para a representa\c c\~ao 
       de uma m\'aquina-ferramenta, fornecendo condi\c c\~oes para permitir
-      a troca de informa\c c\~oes entre uma m\'aquina-ferramenta e softwares
-      como MES, SCADA, ERP, ou sistemas de an\'alise de dados.
+      a troca de informa\c c\~oes entre uma m\'aquina-ferramenta e 
+      softwares como MES, SCADA, ERP, ou sistemas de an\'alise de dados.
     }
 
     \item {
@@ -189,17 +189,45 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
       específicos.
     }
 
-  \end{itemize}   
+  \end{itemize} 
 
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Programação \emph{CN}}
+
+\begin{itemize}
+  \item A diversidade dos formatos, tamb\'em, pode ser verificada na 
+        programa\c c\~ao \emph{CN}.
+  \item Os programas \emph{CN} definem os comandos para a execução dos 
+        movimentos de corte, avanço, posicionamentos e outras ações 
+        necessárias à usinagem.
+  \item Os programas podem fornecer dados importantes sobre os 
+        eventos que ocorrem durante o processo de usinagem.
+  \item Mas para que seja possível a extração dos dados, é necessário 
+        o uso de um formato de arquivo que seja padronizado.
+\end{itemize}  
+
+\end{frame}
 
 
-\begin{frame}{Interoperabilidade}
+\begin{frame}
+  \frametitle{Interoperabilidade}
 
   \begin{itemize}
-    
+    \item {
+        Embora existam padr\~oes formais para a gera\c c\~ao dos 
+        programas, observa-se que os fornecedores de m\'aquinas 
+        adaptam a sintaxe dos programas para atender \`as suas 
+        necessidades espec\'ificas.
+    }
+
+    \item {
+      As adaptações levaram ao surgimento de vários dialetos 
+      para a programação \emph{CN}.
+    }
+     
     \item {
       A diversidade dos dialetos resultaram na falta de interoperabilidade
       entre as máquinas \emph{CN}.
@@ -216,9 +244,10 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
       interoperabilidade.
     }
 
-  \end{itemize}   
+  \end{itemize} 
 
 \end{frame}
+
 
 \subsection{Objetivos}
 
@@ -256,7 +285,41 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \begin{frame}{Gêmeos Digitais}
 
-  TODO
+  \begin{itemize}
+    \item {
+      O \emph{Gêmeo Digital} consiste em um novo paradigma para 
+      simula\c c\~oes.
+    }
+    \item {
+      Consistem em uma simulação integrada, multi-física, multi-escala e 
+      probabilística de um sistema, que usa modelos físicos e dados para
+      espelhá-lo de forma fidedigna e em tempo real, cuidando de forma 
+      preditiva da sua própria permanência no ambiente frente a problemas 
+      não previstos no sistema real ou virtual.
+    }
+    \item {
+      O \emph{Gêmeo Digital} embute uma imagem virtual da realidade, 
+      sendo constantemente sincronizada com o cen\'ario real para que 
+      possa fornecer um modelo virtual de alta fidelidade para simular 
+      os estados e comportamentos com a capacidade de avaliar, otimizar 
+      e fazer predi\c c\~oes.
+    }
+    \item {
+      Os \emph{Gêmeos Digitais} podem ser utilizados, tamb\'em, para 
+      planejar e reconfigurar o produto em resposta \`as mudan\c cas 
+      externas.
+    }
+    \item {
+      Com rela\c c\~ao \`a manufatura, um \emph{Gêmeo Digital} para 
+      controle e otimiza\c c\~ao pode analisar dados coletados a partir de 
+      dispositivos f\'isicos e procurar solu\c c\~oes otimizadas para o 
+      ch\~ao de f\'abrica.
+    }
+    \item {
+      O processo de constru\c c\~ao de um \emph{Gêmeo Digital} necessita 
+      de um modelo de informa\c c\~ao padronizado.
+    }
+  \end{itemize}
 
 \end{frame}  
 
@@ -456,6 +519,29 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
       \end{table}
     }    
   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Pós-processadores}
+
+  \begin{itemize}
+
+    \item {
+      São softwares ou sub-rotinas 
+      que convertem um arquivo gerado em um sistema \emph{CAM} 
+      em um programa que possa ser identificado em um 
+      determinado sistema \emph{CN}.
+    }
+    
+    \item {
+      Porém, há um número elevado tanto de sistemas
+      \emph{CAM} quanto de fornecedores de máquinas \emph{CNC}, 
+      o que faz com que a demanda por Pós-Processadores
+      tenha que ser muito alta.
+    }
+
+  \end{itemize}   
+
 \end{frame}
 
 
@@ -673,27 +759,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 
-\begin{frame}{Pós-processadores}
 
-  \begin{itemize}
-
-    \item {
-      São softwares ou sub-rotinas 
-      que convertem um arquivo gerado em um sistema \emph{CAM} 
-      em um programa que possa ser identificado em um 
-      determinado sistema \emph{CN}.
-    }
-    
-    \item {
-      Porém, há um número elevado tanto de sistemas
-      \emph{CAM} quanto de fornecedores de máquinas \emph{CNC}, 
-      o que faz com que a demanda por Pós-Processadores
-      tenha que ser muito alta.
-    }
-
-  \end{itemize}   
-
-\end{frame}
 
 
 
