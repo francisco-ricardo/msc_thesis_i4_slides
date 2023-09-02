@@ -107,6 +107,97 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \section{Introdução}
 
+\subsection{Contexto}
+
+\begin{frame}
+  \frametitle{Contexto}
+
+  \begin{itemize}
+    \item A usinagem \'e uma atividade relevante na ind\'ustria de 
+          manufatura estando presente em diversos tipos de indústria.
+    \item Na ind\'ustria metal\'urgica, a transforma\c c\~ao 
+          dos materiais met\'alicos ocorre, principalmente, atrav\'es 
+          do uso de m\'aquinas CNC.
+    \item Conhecer o tempo real de usinagem e relacioná-lo com os demais 
+          parâmetros significativos do processo é fundamental para o 
+          planejamento da produção e para a definição dos custos das 
+          operações.
+    \item Obter o tempo real de usinagem corresponde a uma grande 
+          dificuldade no processo de fabricação.
+    \item As estimativas feitas pelos sistemas CAM podem ser muito 
+          inferiores ao tempo real.
+  \end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Interoperabilidade}
+
+  \begin{itemize}
+    
+    \item {
+      A diversidade dos dialetos resultaram na falta de interoperabilidade
+      entre as máquinas \emph{CN}.
+    }
+
+    \item {
+      A mesma pe\c ca necessita de programas diferentes para ser usinada 
+      em m\'aquinas de fornecedores diferentes.
+    }
+
+    \item {
+      A integração entre os sistemas \emph{CN} com outros sistemas 
+      (\emph{CAPP}, por exemplo) são comprometidos pela falta de 
+      interoperabilidade.
+    }
+
+  \end{itemize}   
+
+\end{frame}
+
+\subsection{Objetivos}
+
+\begin{frame}{Objetivo Geral}
+  \begin{itemize}
+    \item { 
+      Desenvolver uma metodologia para interpretar os diferentes dialetos 
+      do formato \emph{RS274-D} e gerar um modelo granular de dados, 
+      no qual cada movimento da m\'aquina \'e registrado com uma marcação 
+      de tempo.
+    }
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Objetivos Específicos}
+  \begin{itemize}
+    \item Projetar uma estrutura de dados que contemple dois objetivos:
+    \begin{itemize}
+        \item Possibilitar o registro temporal dos eventos decorrentes do 
+              processamento do programa de controle numérico.
+        \item Formar uma camada abstrata de dados que possa ser utilizada
+              para tratar das questões da interoperabilidade entre os 
+              dialetos.
+    \end{itemize}
+    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
+    \item Implementar um estudo de caso a partir de um dialeto específico.
+\end{itemize}
+\end{frame}
+
+
+\section{Revisão Bibliográfica}
+
+
+\subsection{Gêmeos Digitais}
+
+\begin{frame}{Gêmeos Digitais}
+
+  TODO
+
+\end{frame}  
+
+
 \subsection{Padrão RS274-D}
 
 \begin{frame}{Origem}
@@ -130,7 +221,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-%\subsection{Objetivos}
 
 \begin{frame}{Objetivos}
   \begin{itemize}
@@ -147,7 +237,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-%\subsection{Arquitetura}
 
 \begin{frame}{Arquitetura}
   \begin{itemize}
@@ -165,24 +254,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Comandos}
-  \begin{itemize}
-  \item {
-    Os comandos devem ser apresentados na seguinte sequência dentro do bloco.
-    \begin{itemize}
-      \item Os comandos de preparação G;
-      \item Os comandos de dimensão, arranjadas na seguinte sequência: X,
-      Y, Z, U, V, W P, Q, R, A, B, C.
-      \item Os comandos de interpolação I, J e K, aplicáveis somente para determinados 
-      grupos de eixos.
-      \item O comando para a função de avanço F.
-      \item O comando para a função de velocidade de corte S.
-      \item O comando para a função de ferramenta T.
-      \item O comando para a função de miscelânea.
-    \end{itemize}
-  }
-  \end{itemize}
-\end{frame}
 
 \begin{frame}{Exemplos de alguns comandos RS274/NGC}
 
@@ -260,9 +331,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \end{frame}
 
-%\section{Dialetos RS274-D}
-
-%\subsection{Problema}
 
 \subsection{Dialetos}
 
@@ -272,16 +340,17 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
     Os padrões são apenas nominais hoje em dia.     
   }
   \item {   
-    A tecnologia dos sistemas CNC avançou muito desde que as normas foram publicadas.
+    A tecnologia dos sistemas CNC avançou muito desde que as normas 
+    foram publicadas.
   }
   \item {
-    Os fabricantes de máquinas têm estendido o padrão (base comum). 
+    Os fabricantes de máquinas têm estendido o padrão \emph{RS274-D}, 
+    criando novos comandos ou adaptando comandos existentes, levando 
+    ao surgimento de vários dialetos. 
   }
   \end{itemize}
 \end{frame}
 
-
-%\subsection{Dialetos: Exemplos}
 
 \begin{frame}{Exemplos}
   \begin{itemize}
@@ -326,69 +395,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-
-\subsection{Interoperabilidade}
-
-\begin{frame}{Interoperabilidade}
-
-  \begin{itemize}
-    
-    \item {
-      A diversidade dos dialetos resultaram na falta de interoperabilidade
-      entre as máquinas \emph{CN}.
-    }
-
-    \item {
-      A mesma pe\c ca necessita de programas diferentes para ser usinada 
-      em m\'aquinas de fornecedores diferentes.
-    }
-
-    \item {
-      A integração entre os sistemas \emph{CN} com outros sistemas 
-      (\emph{CAPP}, por exemplo) são comprometidos pela falta de 
-      interoperabilidade.
-    }
-
-  \end{itemize}   
-
-\end{frame}
-
-\subsection{Objetivos}
-\begin{frame}{Objetivo Geral}
-  \begin{itemize}
-    \item { 
-      Desenvolver uma metodologia para interpretar os diferentes dialetos 
-      do formato \emph{RS274-D} e gerar um modelo granular de dados, no qual 
-      cada movimento da m\'aquina \'e registrado com uma marcação de tempo.
-    }
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Objetivos Específicos}
-  \begin{itemize}
-    \item Projetar uma estrutura de dados que contemple dois objetivos:
-    \begin{itemize}
-        \item Possibilitar o registro temporal dos eventos decorrentes do 
-              processamento do programa de controle numérico.
-        \item Formar uma camada abstrata de dados que possa ser utilizada
-              para tratar das questões da interoperabilidade entre os 
-              dialetos.
-    \end{itemize}
-    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
-    \item Implementar um estudo de caso a partir de um dialeto específico.
-\end{itemize}
-\end{frame}
-
-
-\section{Revisão Bibliográfica}
-
-\subsection{Gêmeos Digitais}
-
-\begin{frame}{Gêmeos Digitais}
-
-  TODO
-
-\end{frame}  
 
 \subsection{Padrão STEP-NC}
 
