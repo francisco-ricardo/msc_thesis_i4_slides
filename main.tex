@@ -784,9 +784,61 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-TODO
-  Análise Léxica
-  Expressões Regulares
+\begin{frame}
+  \frametitle{Análise Léxica}
+  \begin{itemize}
+    \item A Análise Léxica divide o texto em símbolos (\emph{tokens}),
+          os quais possuem um signficado identificado e constituem a 
+          unidade básica de uma determinada linguagem.
+    \item Comparativamente, seria como dividir uma determinada sentença 
+          em um conjunto de palavras.
+    \item O mecanismo para o reconhecimento dos símbolos é baseado em 
+          um modelo matemático conhecido como \emph{Autômato de Estado 
+          Finito}, expresso por meio de \emph{Expressões Regulares}.
+    \item Uma Express\~ao Regular especifica um conjunto de caracteres 
+          a serem comparados em um padr\~ao de pesquisa.
+  \end{itemize}  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Expressões Regulares}
+  \begin{example}
+      "G1X10.Y3.5Z-1.F505"
+      \begin{lstlisting}
+        GCODE = 'G'        
+        INT = '[0-9]+'
+        X = '[Xx]'
+        Y = '[Yy]'
+        Z = '[Zz]'
+        F = 'F'
+        FLOAT = '[+-]?[0-9]+[.]?[0-9]*'
+      \end{lstlisting}
+    \end{example}
+  \end{frame}
+
+
+  \begin{frame}
+    \frametitle{Detalhamento da Expressão Regular \emph{FLOAT}}
+    \begin{itemize}
+      \item \emph{FLOAT} = \emph{'[+-]?[0-9]+[.]?[0-9]*'}
+        \begin{itemize}
+          \item \emph{[-+]}: um caractere \emph{+} ou \emph{-}.
+          \item \emph{?}: o caractere anterior (no caso, \emph{+} ou \emph{-}) deve aparecer 0 ou 1 vez.
+          \item \emph{[0-9]}: um dígito (de 0 até 9).
+          \item \emph{+}: o caractere anterior (no caso, um dígito) deve aparecer 1 ou mais vezes.
+          \item \emph{[.]}: um ponto final (\emph{.}).
+          \item \emph{?}: o caractere anterior (no caso, um ponto final) deve aparecer 0 ou 1 vez.
+          \item \emph{[0-9]}: um dígito (de 0 até 9).
+          \item \emph{*}: o caractere anterior (no caso, um dígito) deve aparecer 0 ou muitas vezes.
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+
+TODO  
   Análise Sintática
   Gramática Livre de contexto
   Algoritmo LR
@@ -878,39 +930,6 @@ TODO
 \end{frame}
 
 
-\begin{frame}[fragile]
-  \frametitle{Exemplo de Expressões Regulares}
-  \begin{example}
-      "G1X10.Y3.5Z-1.F505"
-      \begin{lstlisting}
-        GCODE = 'G'        
-        INT = '[0-9]+'
-        X = '[Xx]'
-        Y = '[Yy]'
-        Z = '[Zz]'
-        F = 'F'
-        FLOAT = '[+-]?[0-9]+[.]?[0-9]*'
-      \end{lstlisting}
-    \end{example}
-  \end{frame}
-
-
-  \begin{frame}
-    \frametitle{Detalhamento da Expressão Regular \emph{FLOAT}}
-    \begin{itemize}
-      \item \emph{FLOAT} = \emph{'[+-]?[0-9]+[.]?[0-9]*'}
-        \begin{itemize}
-          \item \emph{[-+]}: um caractere \emph{+} ou \emph{-}.
-          \item \emph{?}: o caractere anterior (no caso, \emph{+} ou \emph{-}) deve aparecer 0 ou 1 vez.
-          \item \emph{[0-9]}: um dígito (de 0 até 9).
-          \item \emph{+}: o caractere anterior (no caso, um dígito) deve aparecer 1 ou mais vezes.
-          \item \emph{[.]}: um ponto final (\emph{.}).
-          \item \emph{?}: o caractere anterior (no caso, um ponto final) deve aparecer 0 ou 1 vez.
-          \item \emph{[0-9]}: um dígito (de 0 até 9).
-          \item \emph{*}: o caractere anterior (no caso, um dígito) deve aparecer 0 ou muitas vezes.
-      \end{itemize}
-    \end{itemize}
-\end{frame}
 
 
 \begin{frame}{Etapa 2}
