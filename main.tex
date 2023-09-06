@@ -837,6 +837,32 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
+\begin{frame}
+  \frametitle{Análise Sintática}
+
+  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Exemplo de Especificação BNF}
+  \begin{example}
+   "G1X10.Y3.5Z-1.F505"
+    \begin{lstlisting}
+      machining : GCODE "1" position F INT
+
+      position : X FLOAT
+               | Y FLOAT
+               | Z FLOAT
+               | X FLOAT Y FLOAT
+               | X FLOAT Z FLOAT
+               | Y FLOAT Z FLOAT
+               | X FLOAT Y FLOAT Z FLOAT
+    \end{lstlisting}
+  \end{example}  
+\end{frame}
+
 
 TODO  
   Análise Sintática
@@ -930,8 +956,6 @@ TODO
 \end{frame}
 
 
-
-
 \begin{frame}{Etapa 2}
   \begin{itemize}
     \item A segunda etapa (\emph{Parser}) agrupa os símbolos em unidades 
@@ -953,23 +977,6 @@ TODO
 \end{frame}
 
 
-\begin{frame}[fragile]
-  \frametitle{Exemplo de Especificação BNF}
-  \begin{example}
-   "G1X10.Y3.5Z-1.F505"
-    \begin{lstlisting}
-      machining : GCODE "1" position F INT
-
-      position : X FLOAT
-               | Y FLOAT
-               | Z FLOAT
-               | X FLOAT Y FLOAT
-               | X FLOAT Z FLOAT
-               | Y FLOAT Z FLOAT
-               | X FLOAT Y FLOAT Z FLOAT
-    \end{lstlisting}
-  \end{example}  
-\end{frame}
 
 
 \section{Estudo de Caso}
