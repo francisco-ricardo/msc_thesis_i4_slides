@@ -458,8 +458,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\subsection{Dialetos}
-
 \begin{frame}{Dialetos}
   \begin{itemize}
   \item {
@@ -852,6 +850,10 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
           contexto.
     \item GLCs podem ser expressas através de especificações Backus-Naur 
           Form (BNF).
+          \begin{itemize}
+            \item Linguagens de programação, formatos de documentos e 
+                  protocolos de comunicação.
+          \end{itemize}
   \end{itemize}
 
 \end{frame}
@@ -876,12 +878,22 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-TODO  
-  Algoritmo LR
+\begin{frame}
+  \frametitle{Algoritmo LR}
+  \begin{itemize}
+    \item Corresponde a um dos algoritmos mais eficientes para o 
+          processamento de GLCs.
+    \item Fundamentado no método \emph{Shift-Reduce}.
+    \item Amplamente utilizado para o processamento de linguagens de 
+          computação.
+  \end{itemize}
 
+\end{frame}
 
 
 \section{Metodologia}
+
+\subsection{Módulos}
 
 \begin{frame}{Módulos}
   \begin{enumerate}
@@ -949,50 +961,30 @@ TODO
     \item Abordagem baseada em um fluxo de duas etapas:
     \begin{enumerate}
       \item Análise Léxica (ou \emph{Scanning}).
+      \begin{itemize}
+        \item L\^e a entrada e traduz as cadeias de caracteres em símbolos 
+             (tokens).
+        \item Os tokens são identificados a partir de Expressões Regulares.
+      \end{itemize}     
+
       \item Análise Sintática (ou \emph{Parsing}).
+      \begin{itemize}
+        \item Agrupa os símbolos em unidades sint\'aticas 
+              (no caso, blocos de comandos).
+        \item Utiliza uma Gramática Livre de Contexto.
+        \item Extensível para os diversos dialetos.
+        \item A sintaxe do dialeto é descrita através da notação BNF.
+        \item O processamento é feito por um algoritmo \emph{LR}.
+      \end{itemize}
     \end{enumerate}
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Etapa 1}
-  \begin{itemize}
-    \item A primeira etapa (\emph{Scanner}) l\^e a entrada e traduz as 
-          cadeias de caracteres em símbolos (tokens). 
-    \item Uma ferramenta chamada \emph{Flex} foi utilizada para esta 
-          implementa\c c\~ao.
-    \item Os tokens são identificados a partir de Expressões Regulares.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Etapa 2}
-  \begin{itemize}
-    \item A segunda etapa (\emph{Parser}) agrupa os símbolos em unidades 
-          sint\'aticas (no caso, blocos de comandos).
-    \item Utiliza uma Gramática Livre de Contexto (Context-Free Grammar).
-    \item Consiste em um conjunto de regras gramaticais que descrevem a 
-          sintaxe de uma determinada linguagem (no caso, um dialeto RS274-D).
-    \item Extensível para os diversos dialetos.
-    \item A sintaxe do dialeto é descrita através da notação Backus-Naur 
-          Form (BNF).
-    \begin{itemize}
-      \item Linguagens de programação, formatos de documentos e 
-            protocolos de comunicação.
-    \end{itemize}
-    \item O processamento é feito por um algoritmo \emph{LR}, baseado no método 
-          \emph{Shift-Reduce}, amplamente utilizado para o processamento 
-          de linguagens de computação.
-  \end{itemize}
-\end{frame}
-
-
-
-
-\section{Estudo de Caso}
+\section{Estudo de Caso e Implementação}
 
 \begin{frame}
-  \frametitle{Estudo de Caso}
+  \frametitle{Estudo de Caso e Implementação}
   \framesubtitle{Implementação}
 
   \begin{itemize}
@@ -1005,11 +997,11 @@ TODO
           e avaliar os resultados obtidos com esse processo.
   \end{itemize}
 
-  \end{frame}
+\end{frame}
 
 
 \begin{frame}
-  \frametitle{Estudo de Caso}
+  \frametitle{Estudo de Caso e Implementação}
   \framesubtitle{Protótipo}
 
   \begin{itemize}
@@ -1027,7 +1019,7 @@ TODO
 
 
 \begin{frame}
-  \frametitle{Estudo de Caso}
+  \frametitle{Estudo de Caso e Implementação}
   \framesubtitle{Análise Léxica}
   \begin{itemize}
     \item A implementação do \emph{Scanner} utilizou o software 
@@ -1045,7 +1037,7 @@ TODO
 
 
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso}
+  \frametitle{Estudo de Caso e Implementação}
   \framesubtitle{Análise Sintática}
   \begin{itemize}
     \item A implementação do \emph{Parser} utilizou o software 
@@ -1071,7 +1063,7 @@ TODO
 
 
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso}
+  \frametitle{Estudo de Caso e Implementação}
   \framesubtitle{Trecho do programa \emph{CN}}
 
   A tabela abaixo apresenta um trecho do programa \emph{CN}.
@@ -1113,9 +1105,10 @@ TODO
 \end{frame}  
 
 
+\section{Resultados e Discussões}
+
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso}
-  \framesubtitle{Resultados e Discussões}
+  \frametitle{Resultados e Discussões}
 
   As tabelas a seguir apresentam os campos mais relevantes que são 
   resultado da transpilação dos blocos 5, 6 e 7 do programa \emph{CN}.
@@ -1264,8 +1257,7 @@ TODO
 
 
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso}
-  \framesubtitle{Resultados e Discussões}
+  \frametitle{Resultados e Discussões}  
 
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
 
@@ -1421,8 +1413,7 @@ TODO
 
 
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso}
-  \framesubtitle{Resultados e Discussões}
+  \frametitle{Resultados e Discussões}
 
   \begin{itemize}
     \item A coluna \emph{time} correponde ao tempo de duração do evento 
@@ -1432,6 +1423,42 @@ TODO
     \item Estes dados possibilitam a definição do momento em que os 
           eventos devem ocorrer durante a usinagem.
   \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+  \framesubtitle{Velocidade de Rotação ao Longo do Tempo}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=120mm]{images/spindle-speed-values-graph.png}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+  \framesubtitle{Troca de Ferramentas ao Longo do Tempo}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=110mm]{images/tool-number-values-graph.png}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+  \framesubtitle{Velocidade de Avanço ao Longo do Tempo}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=110mm]{images/feed-values-graph.png}
+  \end{figure}
 
 \end{frame}
 
