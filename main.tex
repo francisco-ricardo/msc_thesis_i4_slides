@@ -1463,6 +1463,105 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+
+  \begin{itemize}
+    \item A análise dos dados gerados pelo modelo podem fornecer 
+          informações valiosas para monitorar o processo e prever 
+          eventos futuros.
+    \item Uma possível melhoria no modelo de simulação seria o 
+          emprego de sensores ou outros dispositivos para medir grandezas
+          que pudessem ser relacionadas com os eventos que ocorrem na 
+          usinagem (como potência, força, entre outras).
+    \item Além da estrutrura de dados para simulação do programa 
+          \emph{CN}, a transpilação foi capaz de gerar o arquivo de 
+          Funções Canônicas de Usinagem a partir do \emph{Payload}.
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+
+  \begin{tabular}{ |l|l| }
+
+    \hline
+    \scriptsize{\bfseries{Bloco \emph{RS274-D}}} & 
+    \scriptsize{\bfseries{Funções Canônicas de Usinagem}} \\
+    \hline
+
+    \scriptsize{T3M6} & \scriptsize{SELECT\_TOOL(3)} \\
+    & \scriptsize{CHANGE\_TOOL(3)} \\ 
+    \hline
+    \scriptsize{O3S1857M3} & \scriptsize{SET\_SPINDLE\_SPEED(1857.0)} \\
+    & \scriptsize{START\_SPINDLE\_CLOCKWISE()} \\
+    \hline
+    \scriptsize{G0X-15.Y-65.Z3.} & \scriptsize{STRAIGHT\_TRAVERSE(-15.0, -65.0, 3.0)} \\
+    \hline
+    \scriptsize{X-15.Y-65.Z5.} & \scriptsize{STRAIGHT\_TRAVERSE(-15.0, -65.0, 5.0)} \\
+    \hline
+    \scriptsize{G81Z-8.R3.F186} & \scriptsize{STRAIGHT\_TRAVERSE(-15.0, -65.0, 3.0)} \\
+    \scriptsize{G25X30.Y130.I2J2} & \scriptsize{SET\_FEED\_RATE(186.0)} \\
+    \scriptsize{G80} & \scriptsize{STRAIGHT\_FEED(-15.0, -65.0, -8.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(-15.0, -65.0, 3.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(15.0, -65.0, 3.0)} \\
+    \hline
+
+\end{tabular}  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+
+  \begin{tabular}{ |l|l| }
+
+    \hline
+    \scriptsize{\bfseries{Bloco \emph{RS274-D}}} & 
+    \scriptsize{\bfseries{Funções Canônicas de Usinagem}} \\
+    \hline
+
+    & \scriptsize{SET\_FEED\_RATE(186.0)} \\
+    & \scriptsize{STRAIGHT\_FEED(15.0, -65.0, -8.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(15.0, -65.0, 3.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(15.0, 65.0, 3.0)} \\
+    & \scriptsize{SET\_FEED\_RATE(186.0)} \\
+    & \scriptsize{STRAIGHT\_FEED(15.0, 65.0, -8.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(15.0, 65.0, 3.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(-15.0, 65.0, 3.0)} \\
+
+    & \scriptsize{SET\_FEED\_RATE(186.0)} \\
+    & \scriptsize{STRAIGHT\_FEED(-15.0, 65.0, -8.0)} \\
+    & \scriptsize{STRAIGHT\_TRAVERSE(-15.0, 65.0, 3.0)} \\
+
+    \hline
+    \scriptsize{M5} & \scriptsize{STOP\_SPINDLE\_TURNING()} \\
+    \hline
+
+  \end{tabular}  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Resultados e Discussões}
+
+  \begin{itemize}
+    \item A decomposição de comandos de Ciclos Fixos em comandos 
+          detalhados é uma característica interessante do \emph{Payload} 
+          e das Funções Canônicas de Usinagem.
+    \item O arquivo das Funções Canônicas de Usinagem podem fornecer uma 
+          camada intermedi\'aria de abstra\c c\~ao para a integração 
+          com outros sistemas, pois apresentam um formato port\'avel e 
+          padronizado.
+  \end{itemize}
+  
+\end{frame}
+
+
 \section{Conclusão}
 
 \begin{frame}
