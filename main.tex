@@ -251,30 +251,36 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \subsection{Objetivos}
 
-\begin{frame}{Objetivo Geral}
-  \begin{itemize}
-    \item { 
-      Desenvolver uma metodologia para interpretar os diferentes dialetos 
-      do formato \emph{RS274-D} e gerar um modelo granular de dados, 
-      no qual cada movimento da m\'aquina \'e registrado com uma marcação 
-      de tempo.
-    }
-  \end{itemize}
-\end{frame}
+\begin{frame}{Objetivos}
 
-\begin{frame}{Objetivos Específicos}
   \begin{itemize}
-    \item Projetar uma estrutura de dados que contemple dois objetivos:
-    \begin{itemize}
-        \item Possibilitar o registro temporal dos eventos decorrentes do 
-              processamento do programa de controle numérico.
-        \item Formar uma camada abstrata de dados que possa ser utilizada
-              para tratar das questões da interoperabilidade entre os 
-              dialetos.
+
+    \item Objetivo Geral
+      \begin{itemize}
+        \item { 
+          Desenvolver uma metodologia para interpretar os diferentes dialetos 
+          do formato \emph{RS274-D} e gerar um modelo granular de dados, 
+          no qual cada movimento da m\'aquina \'e registrado com uma marcação 
+          de tempo.
+        }
+      \end{itemize}
+    \vspace{3mm}
+    \item Objetivos Específicos
+      \begin{itemize}
+        \item Projetar uma estrutura de dados que contemple dois objetivos:
+        \begin{itemize}
+            \item Possibilitar o registro temporal dos eventos decorrentes do 
+                  processamento do programa de controle numérico.
+            \item Formar uma camada abstrata de dados que possa ser utilizada
+                  para tratar das questões da interoperabilidade entre os 
+                  dialetos.
+        \end{itemize}
+        \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
+        \item Implementar um estudo de caso a partir de um dialeto específico.
     \end{itemize}
-    \item Representar, por meio de diagramas abstratos, a metodologia proposta na dissertação.
-    \item Implementar um estudo de caso a partir de um dialeto específico.
-\end{itemize}
+
+  \end{itemize}
+
 \end{frame}
 
 
@@ -924,10 +930,11 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
         \item Interpretar a lista de objetos \emph{Payload} 
               e gerar dois tipos de saída:
         \begin{itemize}
-              \item Um arquivo com os dados temporais da usinagem. 
-                    Em formato \emph{CSV}, para facilitar a importação 
+              \item Um arquivo com os dados temporais da usinagem, 
+                    em formato \emph{CSV}, para facilitar a importação 
                     do arquivo em softwares de análise de dados.
-              \item Um arquivo em formato de Funções Canônicas de Usinagem.
+              \item Um arquivo em formato de Funções Canônicas de 
+                    Usinagem.
         \end{itemize}
       \end{itemize}
     }
@@ -951,6 +958,16 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \begin{figure}[H]
     \centering
     \includegraphics[width=90mm]{images/class-main.png}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Diagrama de Classes Payload}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=45mm]{images/class-payload.png}
   \end{figure}
 
 \end{frame}
@@ -1567,7 +1584,47 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \begin{frame}
   \frametitle{Conclusão}
 
-    TODO
+  \begin{itemize}
+    \item O presente trabalho propôs uma metologia para interpretar 
+          dialetos do formato \emph{RS274-D} e extrair uma estrutura de 
+          dados que forneça um detalhamento a respeito dos eventos 
+          definidos no programa e a marcação de tempo em que cada um 
+          desses eventos deverá ocorrer na máquina-ferramenta.
+    \item O modelo de dados, que foi chamado de \emph{Payload}, foi obtida 
+          pela interpretação do arquivo \emph{CN} e forneceu um modelo 
+          virtual da usinagem da peça no equipamento CNC.
+    \item Gráficos foram gerados a partir do modelo de dados e foi possível 
+          simular os momentos em que aconteceriam os seguintes eventos: 
+          as mudanças de velocidade de rotação, as trocas de ferramentas 
+          e as mudanças de velocidade de avanço.
+    \item Além da estrutrura de dados para simulação do programa \emph{CN},
+          outro resultado obtido foi a geração de um arquivo de Funções 
+          Canônicas de Usinagem a partir da estrutura de dados 
+          \emph{Payload}.
+
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Conclusão}
+
+  \begin{itemize}
+    \item Conclui-se que a abordagem proposta foi capaz de fornecer um 
+          modelo virtual do que vai ocorrer durante a usinagem na 
+          máquina-ferramenta, levando em conta as características da 
+          máquina e o dialeto utilizado.
+    \item Além disso, o arquivo das Funções Canônicas de Usinagem podem 
+          fornecer uma camada intermedi\'aria de abstra\c c\~ao para a 
+          integração com outros sistemas, pois apresentam um formato 
+          portável e padronizado.
+    \item Como trabalho futuro, sugere-se o desenvolvimento de um Gêmeo 
+          Digital para o monitoramento do processo de usinagem, com o 
+          emprego de sensores ou outros dispositivos para medir grandezas 
+          que possam ser relacionadas com os eventos que ocorrem na 
+          usinagem (por exemplo, potência elétrica e força).
+  \end{itemize}
 
 \end{frame}
 
