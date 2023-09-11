@@ -153,43 +153,46 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{MT Connect}
+\begin{frame}{Propostas}
 
   \begin{itemize}
-
-    \item {
-      MTConnect \'e um padr\~ao para a troca de dados e informa\c c\~oes 
-      que \'e baseado em um dicion\'ario de dados de termos que descrevem 
-      informa\c c\~oes associadas com as opera\c c\~oes da fabrica\c c\~ao.
+    \item MTConnect {
+    
+      \begin{itemize}
+        \item {
+          MTConnect \'e um padr\~ao para a troca de dados e informações 
+          que é baseado em um dicionário de dados de termos que descrevem 
+          informações associadas com as operações da fabrica\c c\~ao.
+        }
+  
+        \item {
+          Demanda a implanta\c c\~ao de adaptadores ou de sistemas 
+          invasivos para que ocorra a integra\c c\~ao dos dados.      
+        }  
+      \end{itemize}
     }
 
-    \item {
-      Demanda a implanta\c c\~ao de adaptadores ou de sistemas 
-      invasivos para que ocorra a integra\c c\~ao dos dados.      
-    }   
+    \vspace{3mm}
+      
+    \item OPC-UA {
+      \begin{itemize}
 
-  \end{itemize}   
-
-\end{frame}
-
-
-\begin{frame}{OPC-UA}
-
-  \begin{itemize}
-
-    \item {
-      Especifica um modelo de informa\c c\~ao para a representa\c c\~ao 
-      de uma m\'aquina-ferramenta, fornecendo condi\c c\~oes para permitir
-      a troca de informa\c c\~oes entre uma m\'aquina-ferramenta e 
-      softwares como MES, SCADA, ERP, ou sistemas de an\'alise de dados.
+        \item {
+          Especifica um modelo de informação para a representação 
+          de uma máquina-ferramenta, fornecendo condições para permitir
+          a troca de informa\c c\~oes entre uma máquina-ferramenta e 
+          softwares como MES, SCADA, ERP, ou sistemas de análise de dados.
+        }
+  
+        \item {
+          Disponível somente em equipamentos mais modernos e fornecedores 
+          específicos.
+        }
+  
+      \end{itemize}
     }
-
-    \item {
-      Disponível somente em equipamentos mais modernos e fornecedores 
-      específicos.
-    }
-
-  \end{itemize} 
+    
+  \end{itemize}
 
 \end{frame}
 
@@ -576,7 +579,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \end{itemize}
 \end{frame}
 
-%\subsection{Objetivos}
 
 \begin{frame}{Objetivos}
   \begin{itemize}
@@ -899,9 +901,9 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \section{Metodologia}
 
-\subsection{Módulos}
+\subsection{Projeto do Software}
 
-\begin{frame}{Módulos}
+\begin{frame}{Projeto do Software}
   \begin{enumerate}
     \item {
       \emph{Transpiler}: 
@@ -1000,9 +1002,10 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \section{Estudo de Caso e Implementação}
 
+\subsection{Implementação}
+
 \begin{frame}
-  \frametitle{Estudo de Caso e Implementação}
-  \framesubtitle{Implementação}
+  \frametitle{Implementação}
 
   \begin{itemize}
     \item Implementação do \emph{Transpiler} em \emph{C} e \emph{C++}.
@@ -1018,8 +1021,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \begin{frame}
-  \frametitle{Estudo de Caso e Implementação}
-  \framesubtitle{Protótipo}
+  \frametitle{Protótipo}
 
   \begin{itemize}
     \item Controlador de CNC modelo \emph{Mach-9}, fornecedor 
@@ -1036,8 +1038,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \begin{frame}
-  \frametitle{Estudo de Caso e Implementação}
-  \framesubtitle{Análise Léxica}
+  \frametitle{Análise Léxica}
   \begin{itemize}
     \item A implementação do \emph{Scanner} utilizou o software 
           \emph{Flex} e Expressões Regulares para extrair os símbolos.
@@ -1054,8 +1055,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso e Implementação}
-  \framesubtitle{Análise Sintática}
+  \frametitle{Análise Sintática}
   \begin{itemize}
     \item A implementação do \emph{Parser} utilizou o software 
           \emph{Bison}.
@@ -1080,8 +1080,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \begin{frame}[fragile]
-  \frametitle{Estudo de Caso e Implementação}
-  \framesubtitle{Trecho do programa \emph{CN}}
+  \frametitle{Trecho do programa \emph{CN}}
 
   A tabela abaixo apresenta um trecho do programa \emph{CN}.
 
