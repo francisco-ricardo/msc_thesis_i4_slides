@@ -847,6 +847,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \begin{itemize}
     \item Consiste em uma técnica para o entendimento do significado lógico
           ou da semântica das sentenças em uma determinada linguagem.
+    \item Agrupa os símbolos em unidades sint\'aticas 
+          (no caso, blocos de comandos).
     \item Utiliza-se de Gramáticas Livres de Contexto (GLC).
     \item As GLCs consistem em um conjunto de regras gramaticais que 
           descrevem a sintaxe de uma determinada linguagem.
@@ -970,31 +972,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
     \includegraphics[width=45mm]{images/class-payload.png}
   \end{figure}
 
-\end{frame}
-
-
-\begin{frame}{Transpiler}
-  \begin{itemize}
-    \item Abordagem baseada em um fluxo de duas etapas:
-    \begin{enumerate}
-      \item Análise Léxica (ou \emph{Scanning}).
-      \begin{itemize}
-        \item L\^e a entrada e traduz as cadeias de caracteres em símbolos 
-             (tokens).
-        \item Os tokens são identificados a partir de Expressões Regulares.
-      \end{itemize}     
-
-      \item Análise Sintática (ou \emph{Parsing}).
-      \begin{itemize}
-        \item Agrupa os símbolos em unidades sint\'aticas 
-              (no caso, blocos de comandos).
-        \item Utiliza uma Gramática Livre de Contexto.
-        \item Extensível para os diversos dialetos.
-        \item A sintaxe do dialeto é descrita através da notação BNF.
-        \item O processamento é feito por um algoritmo \emph{LR}.
-      \end{itemize}
-    \end{enumerate}
-  \end{itemize}
 \end{frame}
 
 
