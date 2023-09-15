@@ -2,12 +2,7 @@
 
 - Ultimos ajustes
   - simpificar slides
-  - foto fita perfurada
-  - corrigir titulos dos slides para nao ficarem ambiguos
-  - acrescentar desenho da peça
-  - corrigir metologia para metodologia
-  - resultados e discussões:
-    - não está levando em conta a aceleração da máquina e nem as    correções de raio de corte
+
 
 - Solicitar para gravar a apresentação
 

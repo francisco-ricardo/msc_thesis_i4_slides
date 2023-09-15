@@ -302,13 +302,6 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
       simula\c c\~oes.
     }
     \item {
-      Consistem em uma simulação integrada, multi-física, multi-escala e 
-      probabilística de um sistema, que usa modelos físicos e dados para
-      espelhá-lo de forma fidedigna e em tempo real, cuidando de forma 
-      preditiva da sua própria permanência no ambiente frente a problemas 
-      não previstos no sistema real ou virtual.
-    }
-    \item {
       O \emph{Gêmeo Digital} embute uma imagem virtual da realidade, 
       sendo constantemente sincronizada com o cen\'ario real para que 
       possa fornecer um modelo virtual de alta fidelidade para simular 
@@ -316,28 +309,22 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
       e fazer predi\c c\~oes.
     }
     \item {
-      Os \emph{Gêmeos Digitais} podem ser utilizados, tamb\'em, para 
-      planejar e reconfigurar o produto em resposta \`as mudan\c cas 
-      externas.
-    }
-    \item {
-      Com rela\c c\~ao \`a manufatura, um \emph{Gêmeo Digital} para 
-      controle e otimiza\c c\~ao pode analisar dados coletados a partir de 
-      dispositivos f\'isicos e procurar solu\c c\~oes otimizadas para o 
-      ch\~ao de f\'abrica.
-    }
-    \item {
       O processo de constru\c c\~ao de um \emph{Gêmeo Digital} necessita 
       de um modelo de informa\c c\~ao padronizado.
+    }    
+    \item {
+      Oportunidade: Criar uma estrutura de dados a partir do programa
+      \emph{CN} para fornecer um modelo virtual da usinagem da peça na 
+      máquina-ferramenta.
     }
   \end{itemize}
 
 \end{frame}  
 
 
-\subsection{Padrão RS274-D}
+\subsection{Padrão \emph{RS274-D}}
 
-\begin{frame}{Origem}
+\begin{frame}{Origem do padrão \emph{RS274-D}}
   \begin{itemize}
   \item {
     Nos anos sessenta, a Electronic Industry Association (EIA) desenvolveu um 
@@ -349,17 +336,21 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \item {
     O hardware era restrito.
   }
-  \item {
-    Os caracteres eram representados no padrão ASCII (American Standard Code for Information Interchange).
-  }
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=87mm]{images/fita-perfurada.jpg}
+  \end{figure}
+
   \item {
     Em 1982 o padrão foi adotado pela ISO sendo chamado de ISO 6983.
   }
   \end{itemize}
+
 \end{frame}
 
 
-\begin{frame}{Arquitetura}
+\begin{frame}{Arquitetura do padrão \emph{RS274-D}}
   \begin{itemize}
   \item {
     Os programas são organizados em linhas de código, também chamados de blocos.
@@ -453,7 +444,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Dialetos}
+\begin{frame}{Dialetos do padrão \emph{RS274-D}}
   \begin{itemize}
   \item {
     Os padrões são apenas nominais hoje em dia.     
@@ -538,9 +529,9 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\subsection{Padrão STEP-NC}
+\subsection{Padrão \emph{STEP-NC}}
 
-\begin{frame}{Origem}
+\begin{frame}{Origem do padrão \emph{STEP-NC}}
   \begin{itemize}
   \item {
     Esforço realizado pelo Comitê Técnico da ISO 184 (Sistemas de Automação Industrial e
@@ -566,7 +557,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Objetivos}
+\begin{frame}{Objetivos do padrão \emph{STEP-NC}}
   \begin{itemize}
     \item {
       Substituir o padrão RS274-D / ISO 6983.
@@ -593,7 +584,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Exemplo}
+\begin{frame}{Trecho de arquivo \emph{STEP-NC}}
 
   Adaptado de POBOZNIAK, J.; SOBIESKI, S. Extension of STEP-NC data structure to represent
   manufacturing process structure in CAPP system. Procedia Manufacturing, Elsevier,
@@ -612,9 +603,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \end{frame}
 
-%\subsection{Problema}
 
-\begin{frame}{Considerações}
+\begin{frame}{Considerações sobre o padrão \emph{STEP-NC}}
 
   \begin{itemize}
     \item {
@@ -651,7 +641,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Objetivos}
+\begin{frame}{Objetivos das Funções Canônicas de Usinagem}
   \begin{itemize}    
     \item {
       As Funções Canônicas de Usinagem (do Inglês, CMF, Canonical 
@@ -684,7 +674,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Exemplos de comandos}
+\begin{frame}{Exemplos de Funções Canônicas de Usinagem}
   \begin{table}[H]
     \centering
     \begin{tabular}{p{7cm}|p{5cm}}
@@ -727,7 +717,7 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 \end{frame}
 
 
-\begin{frame}{Considerações}
+\begin{frame}{Considerações sobre as Funções Canônicas de Usinagem}
 
   \begin{itemize}
     \item Assim como ocorre com o \emph{STEP-NC}, o formato baseado nas 
@@ -969,9 +959,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
   \begin{itemize}
     \item Implementação do \emph{Transpiler} em \emph{C} e \emph{C++}.
     \item Ambiente de desenvolvimento em \emph{Docker}, 
-          imagem \emph{Debian Bullseye}.
+          imagem \emph{Linux Debian Bullseye}.
     \item \emph{IDE Microsoft Visual Studio Code}.
-    \item Compilador \emph{GCC}.
     \item O foco da implementação foi testar o processo de transpilação 
           e avaliar os resultados obtidos com esse processo.
   \end{itemize}
@@ -986,12 +975,15 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
     \item Controlador de CNC modelo \emph{Mach-9}, fornecedor 
           \emph{Romi - Brasil}, disponível em um centro de usinagem de
            três eixos modelo \emph{Discovery 4022}.
-    \item O controlador \emph{Mach-9} utiliza um dialeto do padrão 
-          \emph{RS274-D}.
     \item O programa \emph{CN} foi gerado no software \emph{CAM} 
           \emph{Edgecam 2019 R2} (\emph{Hexagon} - Suécia), que tem um 
           pós-processador para o dialeto \emph{Mach-9}.
   \end{itemize}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=65mm]{images/img-pc-teste.jpg}
+  \end{figure}
 
 \end{frame}
 
@@ -1081,6 +1073,8 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 
 \section{Resultados e Discussões}
+
+\subsection{Resultados e Discussões}
 
 \begin{frame}[fragile]
   \frametitle{Resultados e Discussões}
@@ -1449,6 +1443,18 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
           emprego de sensores ou outros dispositivos para medir grandezas
           que pudessem ser relacionadas com os eventos que ocorrem na 
           usinagem (como potência, força, entre outras).
+    \item Para o cálculo dos tempos utilizados nos gráficos apresentados
+          não foi levado em conta a aceleração e o tranco (\emph{jerk}) 
+          da máquina Discovery 4022. Entretanto, esses parâmetros podem 
+          ser incluídos na classe \emph{Machine}, que é uma classe 
+          que representa a máquina física.
+    \item As rotinas para cálculo do ajuste do contorno para fins de 
+          compensação do raio de corte (\emph{CRC}) não foram 
+          implementadas. 
+          Embora as \emph{CRCs} não tenham sido utilizadas no estudo de 
+          caso aqui reportado, elas afetam os percursos de avanço e, por 
+          conseguinte, o tempo de usinagem e devem ser consideradas em 
+          implementações futuras.
     \item Além da estrutrura de dados para simulação do programa 
           \emph{CN}, a transpilação foi capaz de gerar o arquivo de 
           Funções Canônicas de Usinagem a partir do \emph{Payload}.
@@ -1539,11 +1545,13 @@ MESTRADO PROFISSIONAL EM ENGENHARIA DE MANUFATURA} % opcional
 
 \section{Conclusão}
 
+\subsection{Conclusão}
+
 \begin{frame}
   \frametitle{Conclusão}
 
   \begin{itemize}
-    \item O presente trabalho propôs uma metologia para interpretar 
+    \item O presente trabalho propôs uma metodologia para interpretar 
           dialetos do formato \emph{RS274-D} e extrair uma estrutura de 
           dados que forneça um detalhamento a respeito dos eventos 
           definidos no programa e a marcação de tempo em que cada um 
